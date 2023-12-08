@@ -1,10 +1,11 @@
 import { Outlet } from 'react-router-dom';
 import classes from './RootLayout.module.css';
+import Header from '../components/Header/Header';
 
 function RootLayout() {
   return (
     <div className={classes.wrapper}>
-      <header>header</header>
+      <Header>header</Header>
       <main className={classes.main}>
         <Outlet />
       </main>
