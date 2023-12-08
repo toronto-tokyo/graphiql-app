@@ -9,6 +9,7 @@ import SignInPage from '../pages/SignInPage';
 import SignUpPage from '../pages/SignUpPage';
 import MainPage from '../pages/MainPage';
 import NotFoundPage from '../pages/NotFoundPage';
+import AuthPrivateRoute from '../hoc/AuthPrivateRoute';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -17,7 +18,14 @@ const router = createBrowserRouter(
         <Route index element={<WelcomePage />} />
         <Route path="/sign-in" element={<SignInPage />} />
         <Route path="/sing-up" element={<SignUpPage />} />
-        <Route path="/main" element={<MainPage />} />
+        <Route
+          path="/main"
+          element={
+            <AuthPrivateRoute>
+              <MainPage />
+            </AuthPrivateRoute>
+          }
+        />
       </Route>
       <Route path="*" element={<NotFoundPage />} />
     </Route>
