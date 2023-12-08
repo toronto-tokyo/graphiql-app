@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import classes from './RootLayout.module.css';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
@@ -6,7 +6,11 @@ import Footer from '../components/Footer/Footer';
 function RootLayout() {
   return (
     <div className={classes.wrapper}>
-      <Header>header</Header>
+      <Header>
+        <NavLink to="/" className={classes.link}>
+          Welcome
+        </NavLink>
+      </Header>
       <main className={classes.main}>
         <Outlet />
       </main>
