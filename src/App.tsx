@@ -1,10 +1,13 @@
+import { RouterProvider } from 'react-router-dom';
+import router from './router/router';
 import './App.css';
+import AuthProvider from './hoc/context/AuthContext/AuthProvider';
 
 function App() {
   return (
-    <>
-      <h1>Hello World</h1>
-    </>
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   );
 }
 
