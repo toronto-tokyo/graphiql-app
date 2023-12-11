@@ -1,4 +1,4 @@
-import { initializeApp } from 'firebase/app';
+import { FirebaseError, initializeApp } from 'firebase/app';
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -6,14 +6,7 @@ import {
   sendPasswordResetEmail,
   signOut,
 } from 'firebase/auth';
-import {
-  getFirestore,
-  // query,
-  // getDocs,
-  collection,
-  // where,
-  addDoc,
-} from 'firebase/firestore';
+import { getFirestore, collection, addDoc } from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyD5QAwbJYbNzA1aA_Hamahg9hUZ9plfGvY',
@@ -28,16 +21,25 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-const logInWithEmailAndPassword = async (email, password) => {
+const logInWithEmailAndPassword = async (email: string, password: string) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
   } catch (err) {
-    console.error(err);
-    alert(err.message);
+    if (err instanceof FirebaseError) {
+      console.error(err);
+      alert(err.message);
+    } else {
+      console.error(err);
+      alert('An unexpected error occurred.');
+    }
   }
 };
 
-const registerWithEmailAndPassword = async (name, email, password) => {
+const registerWithEmailAndPassword = async (
+  name: string,
+  email: string,
+  password: string
+) => {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
     const user = res.user;
@@ -48,8 +50,13 @@ const registerWithEmailAndPassword = async (name, email, password) => {
       email,
     });
   } catch (err) {
-    console.error(err);
-    alert(err.message);
+    if (err instanceof FirebaseError) {
+      console.error(err);
+      alert(err.message);
+    } else {
+      console.error(err);
+      alert('An unexpected error occurred.');
+    }
   }
 };
 
@@ -57,13 +64,18 @@ const logout = () => {
   signOut(auth);
 };
 
-const sendPasswordReset = async (email) => {
+const sendPasswordReset = async (email: string) => {
   try {
     await sendPasswordResetEmail(auth, email);
     alert('Password reset link sent!');
   } catch (err) {
-    console.error(err);
-    alert(err.message);
+    if (err instanceof FirebaseError) {
+      console.error(err);
+      alert(err.message);
+    } else {
+      console.error(err);
+      alert('An unexpected error occurred.');
+    }
   }
 };
 
