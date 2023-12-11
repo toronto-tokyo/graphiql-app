@@ -31,9 +31,11 @@ export const logInWithEmailAndPassword = async (
     if (err instanceof FirebaseError) {
       console.error(err);
       alert(err.message);
+      throw err;
     } else {
       console.error(err);
       alert('An unexpected error occurred.');
+      throw err;
     }
   }
 };
@@ -81,3 +83,5 @@ export const sendPasswordReset = async (email: string) => {
     }
   }
 };
+
+export default app;

@@ -1,21 +1,27 @@
 import { useNavigate } from 'react-router-dom';
-import useAuth from '../../hook/useAuth';
 import InputEmail from '../UI/InputEmail/InputEmail';
 import InputPassword from '../UI/InputPassword/InputPassword';
 import styles from './SignInForm.module.css';
 import SubmitButton from '../UI/SubmitButton/SubmitButton';
 import { useState } from 'react';
+import { logInWithEmailAndPassword } from '../../firebase';
 
 function SignInForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const auth = useAuth();
   const navigate = useNavigate();
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    auth?.setIsAuth(true);
-    navigate('/main');
+    try {
+      await logInWithEmailAndPassword(email, password);
+      navigate('/main');
+      console.log('Logged in successfully');
+    } catch (error) {
+      console.error(error);
+    }
   };
+
   return (
     <form className={styles.form} action="" onSubmit={handleSubmit}>
       <InputEmail

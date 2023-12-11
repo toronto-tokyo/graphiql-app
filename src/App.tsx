@@ -2,12 +2,15 @@ import { RouterProvider } from 'react-router-dom';
 import router from './router/router';
 import './App.css';
 import AuthProvider from './hoc/context/AuthContext/AuthProvider';
+import AuthInitializer from './hoc/context/AuthContext/AuthInitializer';
 
 function App() {
   return (
-    <AuthProvider>
-      <RouterProvider router={router} />
-    </AuthProvider>
+    <AuthInitializer>
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
+    </AuthInitializer>
   );
 }
 
