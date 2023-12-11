@@ -21,7 +21,10 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-const logInWithEmailAndPassword = async (email: string, password: string) => {
+export const logInWithEmailAndPassword = async (
+  email: string,
+  password: string
+) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
   } catch (err) {
@@ -35,7 +38,7 @@ const logInWithEmailAndPassword = async (email: string, password: string) => {
   }
 };
 
-const registerWithEmailAndPassword = async (
+export const registerWithEmailAndPassword = async (
   name: string,
   email: string,
   password: string
@@ -60,11 +63,11 @@ const registerWithEmailAndPassword = async (
   }
 };
 
-const logout = () => {
+export const logout = () => {
   signOut(auth);
 };
 
-const sendPasswordReset = async (email: string) => {
+export const sendPasswordReset = async (email: string) => {
   try {
     await sendPasswordResetEmail(auth, email);
     alert('Password reset link sent!');
@@ -77,11 +80,4 @@ const sendPasswordReset = async (email: string) => {
       alert('An unexpected error occurred.');
     }
   }
-};
-
-export default {
-  logInWithEmailAndPassword,
-  registerWithEmailAndPassword,
-  logout,
-  sendPasswordReset,
 };
