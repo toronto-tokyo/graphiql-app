@@ -2,6 +2,8 @@ import { NavLink, Outlet } from 'react-router-dom';
 import classes from './RootLayout.module.css';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
+import { ErrorBoundary } from 'react-error-boundary';
+import ErrorFallback from '../components/ErrorFallback/ErrorFallback';
 
 function RootLayout() {
   return (
@@ -12,7 +14,9 @@ function RootLayout() {
         </NavLink>
       </Header>
       <main className={classes.main}>
-        <Outlet />
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
+          <Outlet />
+        </ErrorBoundary>
       </main>
       <Footer>footer</Footer>
     </div>
