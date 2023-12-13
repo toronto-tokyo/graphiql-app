@@ -1,7 +1,11 @@
 import enLocale from '../data/en.json';
 import deLocale from '../data/de.json';
 
-export const REGIONS = {
+type Regions = {
+  [key: string]: string;
+};
+
+export const REGIONS: Regions = {
   EN: 'EN',
   DE: 'DE',
 };
