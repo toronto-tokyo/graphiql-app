@@ -4,6 +4,9 @@ import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import useRegion from '../hook/useRegion';
 import { LOCALE_DATA, REGIONS } from '../locales/constants/constants';
+import { ErrorBoundary } from 'react-error-boundary';
+import ErrorFallback from '../components/ErrorFallback/ErrorFallback';
+
 
 function RootLayout() {
   const region = useRegion();
@@ -32,7 +35,9 @@ function RootLayout() {
         </select>
       </Header>
       <main className={classes.main}>
-        <Outlet />
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
+          <Outlet />
+        </ErrorBoundary>
       </main>
       <Footer>footer</Footer>
     </div>
