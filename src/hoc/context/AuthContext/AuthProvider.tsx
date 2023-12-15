@@ -1,14 +1,23 @@
-import { ReactNode, useState } from 'react';
 import AuthContext from './AuthContext';
-
-interface IProps {
-  children: ReactNode;
-}
+import { getAuth } from 'firebase/auth';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import app from '../../../firebase';
+import { IProps } from '../../../shared/types';
 
 function AuthProvider({ children }: IProps) {
-  const [isAuth, setIsAuth] = useState<boolean>(false);
+  const auth = getAuth(app);
+  const [user, loading, error] = useAuthState(auth);
+  const normalizedUser = user ?? null;
+  const normalizedLoading = loading ?? false;
+  const normalizedError = error ?? null;
   return (
-    <AuthContext.Provider value={{ isAuth, setIsAuth }}>
+    <AuthContext.Provider
+      value={{
+        user: normalizedUser,
+        loading: normalizedLoading,
+        error: normalizedError,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

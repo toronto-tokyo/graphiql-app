@@ -1,15 +1,13 @@
 import { Navigate } from 'react-router-dom';
-import useAuth from '../hook/useAuth';
-import { ReactNode } from 'react';
-
-interface IProps {
-  children: ReactNode;
-}
+import { useContext } from 'react';
+import AuthContext from './context/AuthContext/AuthContext';
+import { IAuthContext, IProps } from '../shared/types';
 
 function AuthPrivateRoute({ children }: IProps) {
-  const auth = useAuth();
+  const authContext = useContext<IAuthContext | null>(AuthContext);
+  const { user } = authContext as IAuthContext;
 
-  if (!auth?.isAuth) {
+  if (!user) {
     return <Navigate to="/sign-in" />;
   }
   return children;

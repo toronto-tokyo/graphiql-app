@@ -1,9 +1,5 @@
 import { createContext } from 'react';
-
-interface IAuthContext {
-  isAuth: boolean;
-  setIsAuth: React.Dispatch<React.SetStateAction<boolean>>;
-}
+import { IAuthContext } from '../../../shared/types';
 
 const AuthContext = createContext<IAuthContext | null>(null);
 
