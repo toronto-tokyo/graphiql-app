@@ -1,0 +1,14 @@
+{
+  "header": {
+    "link": {
+      "welcome": "Welcome"
+    }
+  },
+  "welcomePage": {
+    "link": {
+      "signIn": "Sign In",
+      "signUp": "Sign Up",
+      "mainPage": "Main Page"
+    }
+  }
+}
