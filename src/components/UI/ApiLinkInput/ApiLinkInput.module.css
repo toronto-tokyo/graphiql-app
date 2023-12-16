@@ -1,0 +1,9 @@
+.wrapper {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.input {
+  flex: 1 0 auto;
+}
