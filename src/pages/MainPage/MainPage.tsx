@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import classes from './MainPage.module.css';
 import ApiLinkInput from '../../components/UI/ApiLinkInput/ApiLinkInput';
-import { QUERY_TEMPLATE, BASE_API_LINK } from '../../shared/constants';
+import { useAppDispatch, useAppSelector } from '../../hook/useRedux';
+import { setQuery } from '../../redux/slices/GraphQLSlice';
 
 function MainPage() {
-  const [apiLink, setApiLink] = useState(BASE_API_LINK);
-  const [query, setQuery] = useState(QUERY_TEMPLATE);
+  const { apiLink, query } = useAppSelector((store) => store.graphQL);
+  const dispatch = useAppDispatch();
   const [jsonViewerData, setJsonViewerData] = useState('');
 
   const searchHandle = async () => {
@@ -26,13 +27,15 @@ function MainPage() {
 
   return (
     <div className={classes.wrapper}>
-      <ApiLinkInput label="API Link" value={apiLink} changeValue={setApiLink} />
+      <ApiLinkInput label="API Link" />
       <div className={classes.row}>
         <section className={classes.editorWrapper}>
           <textarea
             className={classes.editor}
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(e) => {
+              dispatch(setQuery(e.target.value));
+            }}
           />
         </section>
         <section className={classes.controlPanel}>
