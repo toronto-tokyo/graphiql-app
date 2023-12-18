@@ -1,7 +1,12 @@
 import classes from './MainPage.module.css';
 import ApiLinkInput from '../../components/UI/ApiLinkInput/ApiLinkInput';
 import { useAppDispatch, useAppSelector } from '../../hook/useRedux';
-import { fetchJSON, setError, setQuery } from '../../redux/slices/GraphQLSlice';
+import {
+  fetchJSON,
+  setApiLink,
+  setError,
+  setQuery,
+} from '../../redux/slices/GraphQLSlice';
 import Toast from '../../components/Toast/Toast';
 import errorIcon from '../../assets/error-icon.svg';
 import EditorViewerSwitch from '../../components/EditorViewerSwitch/EditorViewerSwitch';
@@ -16,6 +21,10 @@ function MainPage() {
     dispatch(setError(null));
   };
 
+  const handleApiLinkChange = (value: string) => {
+    dispatch(setApiLink(value));
+  };
+
   return (
     <div className={classes.wrapper}>
       {error && (
@@ -23,7 +32,11 @@ function MainPage() {
           {error}
         </Toast>
       )}
-      <ApiLinkInput label="API Link" />
+      <ApiLinkInput
+        label="API Link"
+        value={apiLink}
+        changeHandler={handleApiLinkChange}
+      />
       <div className={classes.row}>
         <EditorViewerSwitch
           value={query}

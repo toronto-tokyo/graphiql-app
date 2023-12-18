@@ -1,14 +1,16 @@
-import { useAppDispatch, useAppSelector } from '../../../hook/useRedux';
-import { setApiLink } from '../../../redux/slices/GraphQLSlice';
+// import { useAppDispatch, useAppSelector } from '../../../hook/useRedux';
+// import { setApiLink } from '../../../redux/slices/GraphQLSlice';
 import classes from './ApiLinkInput.module.css';
 
 interface IProps {
   label: string;
+  value: string;
+  changeHandler: (value: string) => void;
 }
 
-const ApiSourceInput = ({ label }: IProps) => {
-  const { apiLink } = useAppSelector((store) => store.graphQL);
-  const dispatch = useAppDispatch();
+const ApiSourceInput = ({ label, value, changeHandler }: IProps) => {
+  // const { apiLink } = useAppSelector((store) => store.graphQL);
+  // const dispatch = useAppDispatch();
 
   return (
     <div className={classes.wrapper}>
@@ -17,8 +19,8 @@ const ApiSourceInput = ({ label }: IProps) => {
         className={classes.input}
         id="source"
         type="text"
-        value={apiLink}
-        onChange={(e) => dispatch(setApiLink(e.target.value))}
+        value={value}
+        onChange={(e) => changeHandler(e.target.value)}
       />
     </div>
   );
