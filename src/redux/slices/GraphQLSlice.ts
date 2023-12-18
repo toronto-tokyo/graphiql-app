@@ -1,16 +1,23 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import {
+  createAsyncThunk,
+  createSlice,
+  PayloadAction,
+  UnknownAction,
+} from '@reduxjs/toolkit';
 import { BASE_API_LINK, QUERY_TEMPLATE } from '../../shared/constants';
 
 type InitialState = {
   apiLink: string;
   query: string;
   jsonViewer: string;
+  error: null | string;
 };
 
 const initialState: InitialState = {
   apiLink: BASE_API_LINK,
   query: QUERY_TEMPLATE,
   jsonViewer: '',
+  error: null,
 };
 
 type FetchJSONParams = {
@@ -32,7 +39,8 @@ export const fetchJSON = createAsyncThunk<
       body: JSON.stringify({ query }),
     });
     if (!request.ok) {
-      rejectWithValue('Request Error!');
+      const message = (await request.json()).errors[0].message as string;
+      return rejectWithValue(message);
     }
     const data = await request.json();
     return JSON.stringify(data, null, 4);
@@ -40,6 +48,10 @@ export const fetchJSON = createAsyncThunk<
     return rejectWithValue('Something went wrong!');
   }
 });
+
+const isError = (action: UnknownAction) => {
+  return action.type.endsWith('rejected');
+};
 
 const GraphQLSlice = createSlice({
   name: 'GraphQL',
@@ -52,13 +64,21 @@ const GraphQLSlice = createSlice({
       console.log(action.payload);
       state.query = action.payload;
     },
+    setError(state, action: PayloadAction<string | null>) {
+      state.error = action.payload;
+    },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchJSON.fulfilled, (state, action) => {
-      state.jsonViewer = action.payload;
-    });
+    builder
+      .addCase(fetchJSON.fulfilled, (state, action) => {
+        state.jsonViewer = action.payload;
+      })
+      .addMatcher(isError, (state, action: PayloadAction<string>) => {
+        state.error = action.payload;
+        console.log(state.error);
+      });
   },
 });
 
 export default GraphQLSlice.reducer;
-export const { setApiLink, setQuery } = GraphQLSlice.actions;
+export const { setApiLink, setQuery, setError } = GraphQLSlice.actions;

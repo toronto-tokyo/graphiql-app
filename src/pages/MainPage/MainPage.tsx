@@ -1,16 +1,27 @@
 import classes from './MainPage.module.css';
 import ApiLinkInput from '../../components/UI/ApiLinkInput/ApiLinkInput';
 import { useAppDispatch, useAppSelector } from '../../hook/useRedux';
-import { fetchJSON, setQuery } from '../../redux/slices/GraphQLSlice';
+import { fetchJSON, setError, setQuery } from '../../redux/slices/GraphQLSlice';
+import Toast from '../../components/Toast/Toast';
+import errorIcon from '../../assets/error-icon.svg';
 
 function MainPage() {
-  const { apiLink, query, jsonViewer } = useAppSelector(
+  const { apiLink, query, jsonViewer, error } = useAppSelector(
     (store) => store.graphQL
   );
   const dispatch = useAppDispatch();
 
+  const handleErrToastClose = () => {
+    dispatch(setError(null));
+  };
+
   return (
     <div className={classes.wrapper}>
+      {error && (
+        <Toast imgPath={errorIcon} onClose={handleErrToastClose}>
+          {error}
+        </Toast>
+      )}
       <ApiLinkInput label="API Link" />
       <div className={classes.row}>
         <section className={classes.editorWrapper}>
