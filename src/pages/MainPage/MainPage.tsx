@@ -29,6 +29,10 @@ function MainPage() {
     dispatch(setQuery(value));
   };
 
+  const clickSendButtonHandle = () => {
+    dispatch(fetchJSON({ url: apiLink, query }));
+  };
+
   return (
     <div className={classes.wrapper}>
       {error && (
@@ -44,10 +48,7 @@ function MainPage() {
       <div className={classes.row}>
         <EditorViewerSwitch value={query} onChange={handleQueryEditorChange} />
         <section className={classes.controlPanel}>
-          <button
-            onClick={() => dispatch(fetchJSON({ url: apiLink, query }))}
-            disabled={!apiLink}
-          >
+          <button onClick={clickSendButtonHandle} disabled={!apiLink}>
             Send
           </button>
         </section>
