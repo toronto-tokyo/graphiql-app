@@ -25,6 +25,10 @@ function MainPage() {
     dispatch(setApiLink(value));
   };
 
+  const handleQueryEditorChange = (value: string) => {
+    dispatch(setQuery(value));
+  };
+
   return (
     <div className={classes.wrapper}>
       {error && (
@@ -38,10 +42,7 @@ function MainPage() {
         changeHandler={handleApiLinkChange}
       />
       <div className={classes.row}>
-        <EditorViewerSwitch
-          value={query}
-          onChange={(value: string) => dispatch(setQuery(value))}
-        />
+        <EditorViewerSwitch value={query} onChange={handleQueryEditorChange} />
         <section className={classes.controlPanel}>
           <button
             onClick={() => dispatch(fetchJSON({ url: apiLink, query }))}
