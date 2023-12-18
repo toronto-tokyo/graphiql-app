@@ -17,19 +17,3 @@
 .controlPanel {
   align-self: center;
 }
-
-.editorWrapper,
-.jsonViewerWrapper {
-  flex: 0 1 100%;
-}
-
-.editor,
-.jsonViewer {
-  width: 100%;
-  height: 100%;
-}
-
-.editor:focus,
-.jsonViewer:focus {
-  outline: none;
-}

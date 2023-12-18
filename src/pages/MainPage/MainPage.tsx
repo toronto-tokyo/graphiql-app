@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from '../../hook/useRedux';
 import { fetchJSON, setError, setQuery } from '../../redux/slices/GraphQLSlice';
 import Toast from '../../components/Toast/Toast';
 import errorIcon from '../../assets/error-icon.svg';
+import EditorViewerSwitch from '../../components/EditorViewerSwitch/EditorViewerSwitch';
 
 function MainPage() {
   const { apiLink, query, jsonViewer, error } = useAppSelector(
@@ -24,15 +25,10 @@ function MainPage() {
       )}
       <ApiLinkInput label="API Link" />
       <div className={classes.row}>
-        <section className={classes.editorWrapper}>
-          <textarea
-            className={classes.editor}
-            value={query}
-            onChange={(e) => {
-              dispatch(setQuery(e.target.value));
-            }}
-          />
-        </section>
+        <EditorViewerSwitch
+          value={query}
+          onChange={(value: string) => dispatch(setQuery(value))}
+        />
         <section className={classes.controlPanel}>
           <button
             onClick={() => dispatch(fetchJSON({ url: apiLink, query }))}
@@ -41,13 +37,7 @@ function MainPage() {
             Send
           </button>
         </section>
-        <section className={classes.jsonViewerWrapper}>
-          <textarea
-            className={classes.jsonViewer}
-            value={jsonViewer}
-            readOnly
-          />
-        </section>
+        <EditorViewerSwitch value={jsonViewer} readOnly={true} />
       </div>
     </div>
   );
