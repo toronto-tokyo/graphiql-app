@@ -1,0 +1,19 @@
+.wrapper {
+  position: relative;
+  flex: 1 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.row {
+  flex: 1 0 auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.controlPanel {
+  align-self: center;
+}

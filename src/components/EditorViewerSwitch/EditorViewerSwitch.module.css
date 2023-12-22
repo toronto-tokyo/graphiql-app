@@ -1,0 +1,39 @@
+.wrapper {
+  flex: 0 1 100%;
+}
+
+.editorViewer {
+  width: 100%;
+  height: 100%;
+  resize: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.editorViewer::-webkit-scrollbar {
+  width: 10px;
+}
+.editorViewer::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+.editorViewer::-webkit-scrollbar-thumb {
+  width: 100%;
+  height: 30px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.editorViewer:focus {
+  outline: none;
+}
+
+.queryEditor {
+  background-color: #bca136;
+  color: white;
+}
+
+.jsonViewer {
+  background-color: #107896;
+  color: rgb(255, 255, 255);
+}
