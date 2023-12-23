@@ -2,12 +2,10 @@ import { ChangeEvent, useState } from 'react';
 import * as yup from 'yup';
 import useRegion from '../../../hook/useRegion';
 import { LOCALE_DATA } from '../../../locales/constants/constants';
+import isErrorOfType from '../../../utils/isErrorOfType';
 
 const inputEmailSchema = yup.object().shape({
-  email: yup
-    .string()
-    .required('Email is required')
-    .email('Invalid email address'),
+  email: yup.string().required('required').email('wrong format'),
 });
 
 interface InputEmailProps {
@@ -52,7 +50,10 @@ function InputEmail({ value, onChange }: InputEmailProps) {
       )}
       {error && (
         <div style={{ color: 'red', display: 'block', height: '20px' }}>
-          {error}
+          {isErrorOfType(error, ['required']) &&
+            `${region && LOCALE_DATA[region.region].validation.required}`}
+          {isErrorOfType(error, ['wrong format']) &&
+            `${region && LOCALE_DATA[region.region].validation.email}`}
         </div>
       )}
     </div>

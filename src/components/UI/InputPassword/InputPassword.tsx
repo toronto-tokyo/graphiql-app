@@ -2,15 +2,16 @@ import { ChangeEvent, useState } from 'react';
 import * as yup from 'yup';
 import useRegion from '../../../hook/useRegion';
 import { LOCALE_DATA } from '../../../locales/constants/constants';
+import isErrorOfType from '../../../utils/isErrorOfType';
 
 const passwordSchema = yup.object().shape({
   password: yup
     .string()
-    .required('Password is required')
-    .min(8, 'Password must be at least 8 characters long')
+    .required('required')
+    .min(8, 'wrong format')
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/,
-      'Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character'
+      'wrong format'
     ),
 });
 
@@ -56,7 +57,10 @@ function PasswordInput({ value, onChange }: PasswordInputProps) {
       )}
       {error && (
         <div style={{ color: 'red', display: 'block', height: '20px' }}>
-          {error}
+          {isErrorOfType(error, ['required']) &&
+            `${region && LOCALE_DATA[region.region].validation.required}`}
+          {isErrorOfType(error, ['wrong format']) &&
+            `${region && LOCALE_DATA[region.region].validation.password}`}
         </div>
       )}
     </div>

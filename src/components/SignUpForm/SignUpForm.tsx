@@ -12,20 +12,14 @@ import { LOCALE_DATA } from '../../locales/constants/constants';
 const signUpFormSchema = yup.object().shape({
   name: yup
     .string()
-    .required('Name is required')
-    .matches(/^[A-Z][a-z]*$/, 'Name must start with an uppercase letter'),
-  email: yup
-    .string()
-    .required('Email is required')
-    .email('Invalid email address'),
+    .required()
+    .matches(/^[A-ZА-ЯЁ][a-zа-яё]*$/),
+  email: yup.string().required().email(),
   password: yup
     .string()
-    .required('Password is required')
-    .min(8, 'Password must be at least 8 characters long')
-    .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/,
-      'Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character'
-    ),
+    .required()
+    .min(8)
+    .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/),
 });
 
 function SignUpForm() {

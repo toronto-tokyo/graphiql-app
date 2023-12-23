@@ -2,13 +2,7 @@ import { ChangeEvent, useState } from 'react';
 import * as yup from 'yup';
 import useRegion from '../../../hook/useRegion';
 import { LOCALE_DATA } from '../../../locales/constants/constants';
-
-const inputNameSchema = yup.object().shape({
-  name: yup
-    .string()
-    .required('Name is required')
-    .matches(/^[A-Z][a-z]*$/, 'Name must start with an uppercase letter'),
-});
+import isErrorOfType from '../../../utils/isErrorOfType';
 
 interface InputNameProps {
   value: string;
@@ -18,6 +12,13 @@ interface InputNameProps {
 function InputName({ value, onChange }: InputNameProps) {
   const [error, setError] = useState<string | undefined>(undefined);
   const region = useRegion();
+
+  const inputNameSchema = yup.object().shape({
+    name: yup
+      .string()
+      .required('required')
+      .matches(/^[A-ZА-ЯЁ][a-zа-яё]*$/, 'wrong format'),
+  });
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     onChange(event.target.value);
@@ -47,12 +48,13 @@ function InputName({ value, onChange }: InputNameProps) {
         onChange={handleChange}
         onBlur={validateInput}
       />
-      {!error && (
-        <div style={{ display: 'hidden', height: '20px' }}>{error}</div>
-      )}
+      {!error && <div style={{ display: 'hidden', height: '20px' }}></div>}
       {error && (
         <div style={{ color: 'red', display: 'block', height: '20px' }}>
-          {error}
+          {isErrorOfType(error, ['required']) &&
+            `${region && LOCALE_DATA[region.region].validation.required}`}
+          {isErrorOfType(error, ['wrong format']) &&
+            `${region && LOCALE_DATA[region.region].validation.name}`}
         </div>
       )}
     </div>
