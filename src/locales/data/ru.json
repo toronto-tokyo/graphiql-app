@@ -1,0 +1,14 @@
+{
+  "header": {
+    "link": {
+      "welcome": "Добро Пожаловать"
+    }
+  },
+  "welcomePage": {
+    "link": {
+      "signIn": "Войти",
+      "signUp": "Регистрация",
+      "mainPage": "Главная Страница"
+    }
+  }
+}
