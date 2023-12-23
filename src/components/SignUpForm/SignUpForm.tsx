@@ -6,6 +6,8 @@ import { useState } from 'react';
 import { registerWithEmailAndPassword } from '../../firebase';
 import InputEmail from '../UI/InputEmail/InputEmail';
 import * as yup from 'yup';
+import useRegion from '../../hook/useRegion';
+import { LOCALE_DATA } from '../../locales/constants/constants';
 
 const signUpFormSchema = yup.object().shape({
   name: yup
@@ -27,6 +29,7 @@ const signUpFormSchema = yup.object().shape({
 });
 
 function SignUpForm() {
+  const region = useRegion();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -67,7 +70,10 @@ function SignUpForm() {
         value={formData.password}
         onChange={(value: string) => handleChange('password', value)}
       />
-      <SubmitButton disabled={!isValid} />
+      <SubmitButton
+        disabled={!isValid}
+        text={(region && LOCALE_DATA[region.region].form.button.signUp) ?? ''}
+      />
     </form>
   );
 }

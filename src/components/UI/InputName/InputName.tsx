@@ -1,5 +1,7 @@
 import { ChangeEvent, useState } from 'react';
 import * as yup from 'yup';
+import useRegion from '../../../hook/useRegion';
+import { LOCALE_DATA } from '../../../locales/constants/constants';
 
 const inputNameSchema = yup.object().shape({
   name: yup
@@ -15,6 +17,8 @@ interface InputNameProps {
 
 function InputName({ value, onChange }: InputNameProps) {
   const [error, setError] = useState<string | undefined>(undefined);
+  const region = useRegion();
+
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     onChange(event.target.value);
     setError(undefined);
@@ -33,11 +37,12 @@ function InputName({ value, onChange }: InputNameProps) {
 
   return (
     <div>
-      <label htmlFor="name">Name:</label>
+      <label htmlFor="name">
+        {region && LOCALE_DATA[region.region].form.input.name}
+      </label>
       <input
         type="text"
         id="name"
-        placeholder="Enter your name"
         value={value}
         onChange={handleChange}
         onBlur={validateInput}

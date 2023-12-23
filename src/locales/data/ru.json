@@ -14,14 +14,19 @@
   },
   "signInPage": {
     "text": {
-      "signIn": "Войти",
+      "signIn": "Войти"
+    }
+  },
+  "signUpPage": {
+    "text": {
       "signUp": "Регистрация"
     }
   },
   "form": {
     "input": {
       "email": "Эл. почта:",
-      "password": "Пароль:"
+      "password": "Пароль:",
+      "name": "Имя:"
     },
     "button": {
       "signIn": "Войти",

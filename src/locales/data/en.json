@@ -14,14 +14,19 @@
   },
   "signInPage": {
     "text": {
-      "signIn": "Sign In",
+      "signIn": "Sign In"
+    }
+  },
+  "signUpPage": {
+    "text": {
       "signUp": "Sign Up"
     }
   },
   "form": {
     "input": {
       "email": "Email:",
-      "password": "Password:"
+      "password": "Password:",
+      "name": "Name:"
     },
     "button": {
       "signIn": "Sign In",
