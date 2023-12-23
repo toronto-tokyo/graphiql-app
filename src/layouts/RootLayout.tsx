@@ -29,7 +29,11 @@ function RootLayout() {
         <NavLink to="/" className={classes.link}>
           {region && LOCALE_DATA[region.region].header.link.welcome}
         </NavLink>
-        {user ? <div onClick={logout}>Logout</div> : null}
+        {user ? (
+          <div onClick={logout}>
+            {region && LOCALE_DATA[region.region].header.link.logout}
+          </div>
+        ) : null}
         <select onChange={onSelectChange}>
           {Object.keys(REGIONS).map((key) => {
             return (

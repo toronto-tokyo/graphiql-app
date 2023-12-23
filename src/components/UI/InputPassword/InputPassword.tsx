@@ -1,5 +1,7 @@
 import { ChangeEvent, useState } from 'react';
 import * as yup from 'yup';
+import useRegion from '../../../hook/useRegion';
+import { LOCALE_DATA } from '../../../locales/constants/constants';
 
 const passwordSchema = yup.object().shape({
   password: yup
@@ -19,6 +21,7 @@ interface PasswordInputProps {
 
 function PasswordInput({ value, onChange }: PasswordInputProps) {
   const [error, setError] = useState<string | undefined>(undefined);
+  const region = useRegion();
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     onChange(event.target.value);
@@ -38,11 +41,12 @@ function PasswordInput({ value, onChange }: PasswordInputProps) {
 
   return (
     <div>
-      <label htmlFor="password">Password:</label>
+      <label htmlFor="password">
+        {region && LOCALE_DATA[region.region].form.input.password}
+      </label>
       <input
         type="password"
         id="password"
-        placeholder="Enter your password"
         value={value}
         onChange={handleChange}
         onBlur={validateInput}

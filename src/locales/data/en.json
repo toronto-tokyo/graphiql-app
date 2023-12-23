@@ -1,7 +1,8 @@
 {
   "header": {
     "link": {
-      "welcome": "Welcome"
+      "welcome": "Welcome",
+      "logout": "Logout"
     }
   },
   "welcomePage": {
@@ -9,6 +10,22 @@
       "signIn": "Sign In",
       "signUp": "Sign Up",
       "mainPage": "Main Page"
+    }
+  },
+  "signInPage": {
+    "text": {
+      "signIn": "Sign In",
+      "signUp": "Sign Up"
+    }
+  },
+  "form": {
+    "input": {
+      "email": "Email:",
+      "password": "Password:"
+    },
+    "button": {
+      "signIn": "Sign In",
+      "signUp": "Sign Up"
     }
   }
 }

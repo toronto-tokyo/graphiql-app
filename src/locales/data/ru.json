@@ -1,7 +1,8 @@
 {
   "header": {
     "link": {
-      "welcome": "Добро Пожаловать"
+      "welcome": "Добро Пожаловать",
+      "logout": "Выйти"
     }
   },
   "welcomePage": {
@@ -9,6 +10,22 @@
       "signIn": "Войти",
       "signUp": "Регистрация",
       "mainPage": "Главная Страница"
+    }
+  },
+  "signInPage": {
+    "text": {
+      "signIn": "Войти",
+      "signUp": "Регистрация"
+    }
+  },
+  "form": {
+    "input": {
+      "email": "Эл. почта:",
+      "password": "Пароль:"
+    },
+    "button": {
+      "signIn": "Войти",
+      "signUp": "Регистрация"
     }
   }
 }

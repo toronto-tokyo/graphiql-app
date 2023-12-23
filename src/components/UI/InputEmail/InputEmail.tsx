@@ -1,5 +1,7 @@
 import { ChangeEvent, useState } from 'react';
 import * as yup from 'yup';
+import useRegion from '../../../hook/useRegion';
+import { LOCALE_DATA } from '../../../locales/constants/constants';
 
 const inputEmailSchema = yup.object().shape({
   email: yup
@@ -15,6 +17,7 @@ interface InputEmailProps {
 
 function InputEmail({ value, onChange }: InputEmailProps) {
   const [error, setError] = useState<string | undefined>(undefined);
+  const region = useRegion();
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     onChange(event.target.value);
@@ -34,11 +37,12 @@ function InputEmail({ value, onChange }: InputEmailProps) {
 
   return (
     <div>
-      <label htmlFor="email">Email:</label>
+      <label htmlFor="email">
+        {region && LOCALE_DATA[region.region].form.input.email}
+      </label>
       <input
         type="email"
         id="email"
-        placeholder="Enter your email"
         value={value}
         onChange={handleChange}
         onBlur={validateInput}
