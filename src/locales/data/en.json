@@ -2,7 +2,7 @@
   "header": {
     "link": {
       "welcome": "Welcome",
-      "logout": "Logout"
+      "signOut": "Sign Out"
     }
   },
   "welcomePage": {

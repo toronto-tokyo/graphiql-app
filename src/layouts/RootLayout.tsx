@@ -31,7 +31,7 @@ function RootLayout() {
         </NavLink>
         {user ? (
           <div onClick={logout}>
-            {region && LOCALE_DATA[region.region].header.link.logout}
+            {region && LOCALE_DATA[region.region].header.link.signOut}
           </div>
         ) : null}
         <select onChange={onSelectChange}>

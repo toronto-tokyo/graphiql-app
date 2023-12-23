@@ -2,7 +2,7 @@
   "header": {
     "link": {
       "welcome": "Добро Пожаловать",
-      "logout": "Выйти"
+      "signOut": "Выйти"
     }
   },
   "welcomePage": {
