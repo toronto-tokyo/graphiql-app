@@ -10,9 +10,8 @@ function WelcomePage() {
   const region = useRegion();
   const authContext = useContext<IAuthContext | null>(AuthContext);
   const { user, loading } = authContext as IAuthContext;
-  console.log(user);
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className={classes.loader}></div>;
   }
   return (
     <div className={classes.wrapper}>
