@@ -46,13 +46,24 @@ function MainPage() {
         changeHandler={handleApiLinkChange}
       />
       <div className={classes.row}>
-        <EditorViewerSwitch value={query} onChange={handleQueryEditorChange} />
+        <section
+          className={`${classes.queryResponseSection} ${classes.queryEditor}`}
+        >
+          <EditorViewerSwitch
+            value={query}
+            onChange={handleQueryEditorChange}
+          />
+        </section>
         <section className={classes.controlPanel}>
           <button onClick={clickSendButtonHandle} disabled={!apiLink}>
             Send
           </button>
         </section>
-        <EditorViewerSwitch value={jsonViewer} readOnly={true} />
+        <section
+          className={`${classes.queryResponseSection} ${classes.jsonViewer}`}
+        >
+          <EditorViewerSwitch value={jsonViewer} readOnly={true} />
+        </section>
       </div>
     </div>
   );
