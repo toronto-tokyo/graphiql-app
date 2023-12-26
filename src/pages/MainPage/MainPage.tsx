@@ -33,6 +33,10 @@ function MainPage() {
     dispatch(fetchJSON({ url: apiLink, query }));
   };
 
+  const handlePrettify = () => {
+    console.log('PRETTY');
+  };
+
   return (
     <div className={classes.wrapper}>
       {error && (
@@ -50,6 +54,9 @@ function MainPage() {
         <section className={classes.controlPanel}>
           <button onClick={clickSendButtonHandle} disabled={!apiLink}>
             Send
+          </button>
+          <button onClick={handlePrettify} disabled={!apiLink}>
+            Prettify
           </button>
         </section>
         <EditorViewerSwitch value={jsonViewer} readOnly={true} />
