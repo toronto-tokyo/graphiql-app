@@ -1,5 +1,5 @@
 import enLocale from '../data/en.json';
-import deLocale from '../data/de.json';
+import ruLocale from '../data/ru.json';
 
 type Regions = {
   [key: string]: string;
@@ -7,10 +7,10 @@ type Regions = {
 
 export const REGIONS: Regions = {
   EN: 'EN',
-  DE: 'DE',
+  RU: 'RU',
 };
 
 export const LOCALE_DATA = {
   [REGIONS.EN]: enLocale,
-  [REGIONS.DE]: deLocale,
+  [REGIONS.RU]: ruLocale,
 };

@@ -7,9 +7,14 @@ import useRegion from '../hook/useRegion';
 import { LOCALE_DATA, REGIONS } from '../locales/constants/constants';
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorFallback from '../components/ErrorFallback/ErrorFallback';
+import { IAuthContext } from '../shared/types';
+import AuthContext from '../hoc/context/AuthContext/AuthContext';
+import { useContext } from 'react';
 
 function RootLayout() {
   const region = useRegion();
+  const authContext = useContext<IAuthContext | null>(AuthContext);
+  const { user } = authContext as IAuthContext;
 
   const onSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const value = e.target.value;
@@ -24,7 +29,11 @@ function RootLayout() {
         <NavLink to="/" className={classes.link}>
           {region && LOCALE_DATA[region.region].header.link.welcome}
         </NavLink>
-        <div onClick={logout}>Logout</div>
+        {user ? (
+          <div onClick={logout}>
+            {region && LOCALE_DATA[region.region].header.link.signOut}
+          </div>
+        ) : null}
         <select onChange={onSelectChange}>
           {Object.keys(REGIONS).map((key) => {
             return (

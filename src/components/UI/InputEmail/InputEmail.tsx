@@ -1,11 +1,11 @@
 import { ChangeEvent, useState } from 'react';
 import * as yup from 'yup';
+import useRegion from '../../../hook/useRegion';
+import { LOCALE_DATA } from '../../../locales/constants/constants';
+import isErrorOfType from '../../../utils/isErrorOfType';
 
 const inputEmailSchema = yup.object().shape({
-  email: yup
-    .string()
-    .required('Email is required')
-    .email('Invalid email address'),
+  email: yup.string().required('required').email('wrong format'),
 });
 
 interface InputEmailProps {
@@ -15,6 +15,7 @@ interface InputEmailProps {
 
 function InputEmail({ value, onChange }: InputEmailProps) {
   const [error, setError] = useState<string | undefined>(undefined);
+  const region = useRegion();
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     onChange(event.target.value);
@@ -34,11 +35,12 @@ function InputEmail({ value, onChange }: InputEmailProps) {
 
   return (
     <div>
-      <label htmlFor="email">Email:</label>
+      <label htmlFor="email">
+        {region && LOCALE_DATA[region.region].form.input.email}
+      </label>
       <input
         type="email"
         id="email"
-        placeholder="Enter your email"
         value={value}
         onChange={handleChange}
         onBlur={validateInput}
@@ -48,7 +50,10 @@ function InputEmail({ value, onChange }: InputEmailProps) {
       )}
       {error && (
         <div style={{ color: 'red', display: 'block', height: '20px' }}>
-          {error}
+          {isErrorOfType(error, ['required']) &&
+            `${region && LOCALE_DATA[region.region].validation.required}`}
+          {isErrorOfType(error, ['wrong format']) &&
+            `${region && LOCALE_DATA[region.region].validation.email}`}
         </div>
       )}
     </div>

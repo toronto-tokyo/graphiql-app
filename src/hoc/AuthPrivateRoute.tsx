@@ -8,7 +8,7 @@ function AuthPrivateRoute({ children }: IProps) {
   const { user } = authContext as IAuthContext;
 
   if (!user) {
-    return <Navigate to="/sign-in" />;
+    return <Navigate to="/" />;
   }
   return children;
 }

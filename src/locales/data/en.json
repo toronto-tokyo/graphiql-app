@@ -1,7 +1,8 @@
 {
   "header": {
     "link": {
-      "welcome": "Welcome"
+      "welcome": "Welcome",
+      "signOut": "Sign Out"
     }
   },
   "welcomePage": {
@@ -10,5 +11,32 @@
       "signUp": "Sign Up",
       "mainPage": "Main Page"
     }
+  },
+  "signInPage": {
+    "text": {
+      "signIn": "Sign In"
+    }
+  },
+  "signUpPage": {
+    "text": {
+      "signUp": "Sign Up"
+    }
+  },
+  "form": {
+    "input": {
+      "email": "Email:",
+      "password": "Password:",
+      "name": "Name:"
+    },
+    "button": {
+      "signIn": "Sign In",
+      "signUp": "Sign Up"
+    }
+  },
+  "validation": {
+    "required": "Required field",
+    "name": "Name must start with an uppercase letter",
+    "email": "Wrong email format",
+    "password": "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character"
   }
 }

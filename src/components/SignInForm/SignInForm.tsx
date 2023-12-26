@@ -6,6 +6,8 @@ import SubmitButton from '../UI/SubmitButton/SubmitButton';
 import { useState } from 'react';
 import { logInWithEmailAndPassword } from '../../firebase';
 import * as yup from 'yup';
+import useRegion from '../../hook/useRegion';
+import { LOCALE_DATA } from '../../locales/constants/constants';
 
 const signInFormSchema = yup.object().shape({
   email: yup
@@ -24,6 +26,7 @@ const signInFormSchema = yup.object().shape({
 
 function SignInForm() {
   const navigate = useNavigate();
+  const region = useRegion();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -58,7 +61,10 @@ function SignInForm() {
         value={formData.password}
         onChange={(value: string) => handleChange('password', value)}
       />
-      <SubmitButton disabled={!isValid} />
+      <SubmitButton
+        disabled={!isValid}
+        text={(region && LOCALE_DATA[region.region].form.button.signIn) ?? ''}
+      />
     </form>
   );
 }
