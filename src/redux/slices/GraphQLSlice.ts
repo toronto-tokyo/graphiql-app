@@ -11,6 +11,7 @@ type InitialState = {
   query: string;
   jsonViewer: string;
   error: null | string;
+  variables: string;
 };
 
 const initialState: InitialState = {
@@ -18,36 +19,44 @@ const initialState: InitialState = {
   query: QUERY_TEMPLATE,
   jsonViewer: '',
   error: null,
+  variables: '',
 };
 
 type FetchJSONParams = {
   url: string;
   query: string;
+  variables: string;
 };
 
 export const fetchJSON = createAsyncThunk<
   string,
   FetchJSONParams,
   { rejectValue: string }
->('GraphQLSlice/fetchJSON', async ({ url, query }, { rejectWithValue }) => {
-  try {
-    const request = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify({ query }),
-    });
-    if (!request.ok) {
-      const message = (await request.json()).errors[0].message as string;
-      return rejectWithValue(message);
+>(
+  'GraphQLSlice/fetchJSON',
+  async ({ url, query, variables }, { rejectWithValue }) => {
+    try {
+      const request = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          query,
+          variables: JSON.parse(variables),
+        }),
+      });
+      if (!request.ok) {
+        const message = (await request.json()).errors[0].message as string;
+        return rejectWithValue(message);
+      }
+      const data = await request.json();
+      return JSON.stringify(data, null, 4);
+    } catch (error) {
+      return rejectWithValue('Something went wrong!');
     }
-    const data = await request.json();
-    return JSON.stringify(data, null, 4);
-  } catch (error) {
-    return rejectWithValue('Something went wrong!');
   }
-});
+);
 
 const isError = (action: UnknownAction) => {
   return action.type.endsWith('rejected');
@@ -67,6 +76,9 @@ const GraphQLSlice = createSlice({
     setError(state, action: PayloadAction<string | null>) {
       state.error = action.payload;
     },
+    setVariables(state, action: PayloadAction<string>) {
+      state.variables = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -81,4 +93,5 @@ const GraphQLSlice = createSlice({
 });
 
 export default GraphQLSlice.reducer;
-export const { setApiLink, setQuery, setError } = GraphQLSlice.actions;
+export const { setApiLink, setQuery, setError, setVariables } =
+  GraphQLSlice.actions;

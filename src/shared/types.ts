@@ -15,3 +15,8 @@ export interface IAuthContext {
   loading: boolean | null;
   error: Error | null;
 }
+
+export interface ITab {
+  id: number;
+  label: string;
+}
