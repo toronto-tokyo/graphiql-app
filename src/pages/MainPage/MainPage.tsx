@@ -40,11 +40,7 @@ function MainPage() {
           {error}
         </Toast>
       )}
-      <ApiLinkForm
-        label="API Link"
-        value={apiLink}
-        submitHandler={handleChangeURLBtnClick}
-      />
+      <ApiLinkForm value={apiLink} submitHandler={handleChangeURLBtnClick} />
       <div className={classes.row}>
         <section
           className={`${classes.queryResponseSection} ${classes.queryEditor}`}

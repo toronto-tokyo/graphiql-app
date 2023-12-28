@@ -43,6 +43,10 @@
     "editorTabs": {
       "variables": "Variables",
       "headers": "Headers"
+    },
+    "apiLinkForm": {
+      "label": "API URL",
+      "changeApiBtn": "Change URL"
     }
   }
 }

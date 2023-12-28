@@ -43,6 +43,10 @@
     "editorTabs": {
       "variables": "Переменые",
       "headers": "Заголовки"
+    },
+    "apiLinkForm": {
+      "label": "API адрес",
+      "changeApiBtn": "Изменить адрес"
     }
   }
 }

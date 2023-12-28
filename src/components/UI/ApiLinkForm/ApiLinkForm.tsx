@@ -1,21 +1,26 @@
-import classes from './ApiLinkFrom.module.css';
+import classes from './ApiLinkForm.module.css';
 import useApiLinkForm from './useApiLinkForm';
 
 interface IProps {
-  label: string;
   value: string;
   submitHandler: (value: string) => void;
 }
 
-const ApiSourceInput = ({ label, value, submitHandler }: IProps) => {
-  const { inputValue, handleInputChange, handleSubmit } = useApiLinkForm({
+const ApiSourceInput = ({ value, submitHandler }: IProps) => {
+  const {
+    inputValue,
+    handleInputChange,
+    handleSubmit,
+    labelText,
+    changeUrlBtnText,
+  } = useApiLinkForm({
     value,
     submitHandler,
   });
 
   return (
     <form className={classes.form} onSubmit={handleSubmit}>
-      <label htmlFor="source">{label}</label>
+      <label htmlFor="source">{labelText}</label>
       <input
         className={classes.input}
         id="source"
@@ -23,7 +28,7 @@ const ApiSourceInput = ({ label, value, submitHandler }: IProps) => {
         value={inputValue}
         onChange={(e) => handleInputChange(e.target.value)}
       />
-      <button type="submit">Change URL</button>
+      <button type="submit">{changeUrlBtnText}</button>
     </form>
   );
 };
