@@ -1,5 +1,5 @@
-import classes from './ApiLinkInput.module.css';
-import useApiLinkInput from './useApiLinkInput';
+import classes from './ApiLinkFrom.module.css';
+import useApiLinkForm from './useApiLinkForm';
 
 interface IProps {
   label: string;
@@ -8,7 +8,7 @@ interface IProps {
 }
 
 const ApiSourceInput = ({ label, value, submitHandler }: IProps) => {
-  const { inputValue, handleInputChange, handleSubmit } = useApiLinkInput({
+  const { inputValue, handleInputChange, handleSubmit } = useApiLinkForm({
     value,
     submitHandler,
   });

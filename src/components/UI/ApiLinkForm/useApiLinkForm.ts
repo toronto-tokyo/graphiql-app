@@ -5,7 +5,7 @@ interface IProps {
   submitHandler: (value: string) => void;
 }
 
-const useApiLinkInput = ({ value, submitHandler }: IProps) => {
+const useApiLinkForm = ({ value, submitHandler }: IProps) => {
   const [inputValue, setInputValue] = useState(value);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -23,4 +23,4 @@ const useApiLinkInput = ({ value, submitHandler }: IProps) => {
   };
 };
 
-export default useApiLinkInput;
+export default useApiLinkForm;

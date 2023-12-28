@@ -1,5 +1,5 @@
 import classes from './MainPage.module.css';
-import ApiLinkInput from '../../components/UI/ApiLinkInput/ApiLinkInput';
+import ApiLinkForm from '../../components/UI/ApiLinkForm/ApiLinkForm';
 import { useAppDispatch, useAppSelector } from '../../hook/useRedux';
 import {
   fetchJSON,
@@ -40,7 +40,7 @@ function MainPage() {
           {error}
         </Toast>
       )}
-      <ApiLinkInput
+      <ApiLinkForm
         label="API Link"
         value={apiLink}
         submitHandler={handleChangeURLBtnClick}
