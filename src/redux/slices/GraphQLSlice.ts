@@ -36,7 +36,7 @@ export const fetchJSON = createAsyncThunk<
   'GraphQLSlice/fetchJSON',
   async ({ url, query, variables }, { rejectWithValue }) => {
     try {
-      const request = await fetch(url, {
+      const response = await fetch(url, {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',
@@ -46,11 +46,11 @@ export const fetchJSON = createAsyncThunk<
           variables: JSON.parse(variables),
         }),
       });
-      if (!request.ok) {
-        const message = (await request.json()).errors[0].message as string;
+      if (!response.ok) {
+        const message = (await response.json()).errors[0].message as string;
         return rejectWithValue(message);
       }
-      const data = await request.json();
+      const data = await response.json();
       return JSON.stringify(data, null, 4);
     } catch (error) {
       return rejectWithValue('Something went wrong!');
