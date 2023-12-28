@@ -21,16 +21,16 @@ function MainPage() {
     dispatch(setError(null));
   };
 
-  const handleApiLinkChange = (value: string) => {
-    dispatch(setApiLink(value));
-  };
-
   const handleQueryEditorChange = (value: string) => {
     dispatch(setQuery(value));
   };
 
   const clickSendButtonHandle = () => {
     dispatch(fetchJSON({ url: apiLink, query, variables, headers }));
+  };
+
+  const handleChangeURLBtnClick = (value: string) => {
+    dispatch(setApiLink(value));
   };
 
   return (
@@ -43,7 +43,7 @@ function MainPage() {
       <ApiLinkInput
         label="API Link"
         value={apiLink}
-        changeHandler={handleApiLinkChange}
+        submitHandler={handleChangeURLBtnClick}
       />
       <div className={classes.row}>
         <section
