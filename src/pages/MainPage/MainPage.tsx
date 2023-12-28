@@ -10,9 +10,10 @@ import {
 import Toast from '../../components/Toast/Toast';
 import errorIcon from '../../assets/error-icon.svg';
 import EditorViewerSwitch from '../../components/EditorViewerSwitch/EditorViewerSwitch';
+import EditorTools from '../../components/EditorTools/EditorTools';
 
 function MainPage() {
-  const { apiLink, query, jsonViewer, error } = useAppSelector(
+  const { apiLink, query, jsonViewer, error, variables } = useAppSelector(
     (store) => store.graphQL
   );
   const dispatch = useAppDispatch();
@@ -30,7 +31,7 @@ function MainPage() {
   };
 
   const clickSendButtonHandle = () => {
-    dispatch(fetchJSON({ url: apiLink, query }));
+    dispatch(fetchJSON({ url: apiLink, query, variables }));
   };
 
   return (
@@ -46,13 +47,25 @@ function MainPage() {
         changeHandler={handleApiLinkChange}
       />
       <div className={classes.row}>
-        <EditorViewerSwitch value={query} onChange={handleQueryEditorChange} />
+        <section
+          className={`${classes.queryResponseSection} ${classes.queryEditor}`}
+        >
+          <EditorViewerSwitch
+            value={query}
+            onChange={handleQueryEditorChange}
+          />
+          <EditorTools />
+        </section>
         <section className={classes.controlPanel}>
           <button onClick={clickSendButtonHandle} disabled={!apiLink}>
             Send
           </button>
         </section>
-        <EditorViewerSwitch value={jsonViewer} readOnly={true} />
+        <section
+          className={`${classes.queryResponseSection} ${classes.jsonViewer}`}
+        >
+          <EditorViewerSwitch value={jsonViewer} readOnly={true} />
+        </section>
       </div>
     </div>
   );

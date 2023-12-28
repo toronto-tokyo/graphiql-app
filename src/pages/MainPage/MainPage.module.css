@@ -7,6 +7,24 @@
   gap: 20px;
 }
 
+.queryResponseSection {
+  flex: 0 1 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+.queryEditor {
+  background-color: #bca136;
+  color: rgb(255, 255, 255);
+}
+
+.jsonViewer {
+  background-color: #107896;
+  color: rgb(255, 255, 255);
+}
+
 .row {
   flex: 1 0 auto;
   display: flex;

@@ -1,13 +1,12 @@
-.wrapper {
-  flex: 0 1 100%;
-}
-
 .editorViewer {
+  flex: 0 1 100%;
   width: 100%;
-  height: 100%;
   resize: none;
   padding: 10px;
+  background-color: transparent;
+  color: inherit;
   border-radius: 5px;
+  border: none;
 }
 
 .editorViewer::-webkit-scrollbar {
@@ -26,14 +25,4 @@
 
 .editorViewer:focus {
   outline: none;
-}
-
-.queryEditor {
-  background-color: #bca136;
-  color: white;
-}
-
-.jsonViewer {
-  background-color: #107896;
-  color: rgb(255, 255, 255);
 }

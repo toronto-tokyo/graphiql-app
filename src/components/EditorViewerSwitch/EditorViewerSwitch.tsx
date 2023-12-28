@@ -8,16 +8,12 @@ interface IProps {
 
 const EditorViewerSwitch = ({ value, onChange, readOnly }: IProps) => {
   return (
-    <section className={classes.wrapper}>
-      <textarea
-        className={`${classes.editorViewer} ${
-          readOnly ? classes.jsonViewer : classes.queryEditor
-        }`}
-        value={value}
-        onChange={(e) => onChange?.(e.target.value)}
-        readOnly={readOnly}
-      />
-    </section>
+    <textarea
+      className={classes.editorViewer}
+      value={value}
+      onChange={(e) => onChange?.(e.target.value)}
+      readOnly={readOnly}
+    />
   );
 };
 
