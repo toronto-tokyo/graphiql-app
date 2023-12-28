@@ -13,9 +13,8 @@ import EditorViewerSwitch from '../../components/EditorViewerSwitch/EditorViewer
 import EditorTools from '../../components/EditorTools/EditorTools';
 
 function MainPage() {
-  const { apiLink, query, jsonViewer, error, variables } = useAppSelector(
-    (store) => store.graphQL
-  );
+  const { apiLink, query, jsonViewer, error, variables, headers } =
+    useAppSelector((store) => store.graphQL);
   const dispatch = useAppDispatch();
 
   const handleErrToastClose = () => {
@@ -31,7 +30,7 @@ function MainPage() {
   };
 
   const clickSendButtonHandle = () => {
-    dispatch(fetchJSON({ url: apiLink, query, variables }));
+    dispatch(fetchJSON({ url: apiLink, query, variables, headers }));
   };
 
   return (

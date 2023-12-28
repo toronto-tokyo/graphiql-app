@@ -12,6 +12,7 @@ type InitialState = {
   jsonViewer: string;
   error: null | string;
   variables: string;
+  headers: string;
 };
 
 const initialState: InitialState = {
@@ -20,12 +21,14 @@ const initialState: InitialState = {
   jsonViewer: '',
   error: null,
   variables: '',
+  headers: '',
 };
 
 type FetchJSONParams = {
   url: string;
   query: string;
   variables: string;
+  headers: string;
 };
 
 export const fetchJSON = createAsyncThunk<
@@ -34,13 +37,19 @@ export const fetchJSON = createAsyncThunk<
   { rejectValue: string }
 >(
   'GraphQLSlice/fetchJSON',
-  async ({ url, query, variables }, { rejectWithValue }) => {
+  async ({ url, query, variables, headers }, { rejectWithValue }) => {
     try {
+      console.log(headers);
       const response = await fetch(url, {
         method: 'POST',
-        headers: {
-          'Content-type': 'application/json',
-        },
+        headers: headers
+          ? {
+              'Content-type': 'application/json',
+              ...JSON.parse(headers),
+            }
+          : {
+              'Content-type': 'application/json',
+            },
         body: JSON.stringify(
           variables
             ? {
@@ -85,6 +94,9 @@ const GraphQLSlice = createSlice({
     setVariables(state, action: PayloadAction<string>) {
       state.variables = action.payload;
     },
+    setHeaders(state, action: PayloadAction<string>) {
+      state.headers = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -99,5 +111,5 @@ const GraphQLSlice = createSlice({
 });
 
 export default GraphQLSlice.reducer;
-export const { setApiLink, setQuery, setError, setVariables } =
+export const { setApiLink, setQuery, setError, setVariables, setHeaders } =
   GraphQLSlice.actions;
