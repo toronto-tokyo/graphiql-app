@@ -9,6 +9,8 @@ const EditorTools = () => {
     handleVariablesChange,
     selectedTabId,
     variables,
+    headers,
+    handleHeadersChange,
   } = useEditorTools();
 
   return (
@@ -26,7 +28,13 @@ const EditorTools = () => {
           onChange={(e) => handleVariablesChange(e.target.value)}
         />
       )}
-      {selectedTabId === 2 && <textarea className={classes.toolField} />}
+      {selectedTabId === 2 && (
+        <textarea
+          className={classes.toolField}
+          value={headers}
+          onChange={(e) => handleHeadersChange(e.target.value)}
+        />
+      )}
     </div>
   );
 };
