@@ -41,10 +41,16 @@ export const fetchJSON = createAsyncThunk<
         headers: {
           'Content-type': 'application/json',
         },
-        body: JSON.stringify({
-          query,
-          variables: JSON.parse(variables),
-        }),
+        body: JSON.stringify(
+          variables
+            ? {
+                query,
+                variables: JSON.parse(variables),
+              }
+            : {
+                query,
+              }
+        ),
       });
       if (!response.ok) {
         const message = (await response.json()).errors[0].message as string;
