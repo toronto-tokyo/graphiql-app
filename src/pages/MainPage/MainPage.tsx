@@ -1,5 +1,5 @@
 import classes from './MainPage.module.css';
-import ApiLinkInput from '../../components/UI/ApiLinkInput/ApiLinkInput';
+import ApiLinkForm from '../../components/UI/ApiLinkForm/ApiLinkForm';
 import { useAppDispatch, useAppSelector } from '../../hook/useRedux';
 import {
   fetchJSON,
@@ -21,16 +21,16 @@ function MainPage() {
     dispatch(setError(null));
   };
 
-  const handleApiLinkChange = (value: string) => {
-    dispatch(setApiLink(value));
-  };
-
   const handleQueryEditorChange = (value: string) => {
     dispatch(setQuery(value));
   };
 
   const clickSendButtonHandle = () => {
     dispatch(fetchJSON({ url: apiLink, query, variables, headers }));
+  };
+
+  const handleChangeURLBtnClick = (value: string) => {
+    dispatch(setApiLink(value));
   };
 
   return (
@@ -40,11 +40,7 @@ function MainPage() {
           {error}
         </Toast>
       )}
-      <ApiLinkInput
-        label="API Link"
-        value={apiLink}
-        changeHandler={handleApiLinkChange}
-      />
+      <ApiLinkForm value={apiLink} submitHandler={handleChangeURLBtnClick} />
       <div className={classes.row}>
         <section
           className={`${classes.queryResponseSection} ${classes.queryEditor}`}
