@@ -13,6 +13,7 @@ type InitialState = {
   error: null | string;
   variables: string;
   headers: string;
+  documentation: string;
 };
 
 const initialState: InitialState = {
@@ -22,6 +23,7 @@ const initialState: InitialState = {
   error: null,
   variables: '',
   headers: '',
+  documentation: '',
 };
 
 type FetchJSONParams = {
@@ -97,6 +99,10 @@ const GraphQLSlice = createSlice({
     setHeaders(state, action: PayloadAction<string>) {
       state.headers = action.payload;
     },
+    setDocumentation(state, action: PayloadAction<string>) {
+      console.log(action.payload);
+      state.documentation = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -111,5 +117,11 @@ const GraphQLSlice = createSlice({
 });
 
 export default GraphQLSlice.reducer;
-export const { setApiLink, setQuery, setError, setVariables, setHeaders } =
-  GraphQLSlice.actions;
+export const {
+  setApiLink,
+  setQuery,
+  setError,
+  setVariables,
+  setHeaders,
+  setDocumentation,
+} = GraphQLSlice.actions;

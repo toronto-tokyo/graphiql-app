@@ -1,0 +1,11 @@
+.sideTools {
+  flex: 0 1 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.documentationContent {
+  flex: 0 1 100%;
+  resize: none;
+}
