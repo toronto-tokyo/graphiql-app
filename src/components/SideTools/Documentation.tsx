@@ -1,4 +1,4 @@
-import classes from './SideTools.module.css';
+import classes from './Documentation.module.css';
 import useDocumentation from './useDocumentation';
 
 const Documentation = () => {
