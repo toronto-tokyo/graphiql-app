@@ -1,8 +1,17 @@
-.sideTools {
-  flex: 0 1 30%;
+.wrapper {
+  flex: 1 0 30%;
   display: flex;
+  gap: 5px;
+}
+
+.documentationTools {
+  align-self: flex-start;
+}
+
+.documentationContentWrap {
+  display: flex;
+  flex: 1 0 auto;
   flex-direction: column;
-  gap: 20px;
 }
 
 .documentationContent {
