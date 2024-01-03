@@ -2,14 +2,17 @@ import { useAppDispatch, useAppSelector } from '../../hook/useRedux';
 import useRegion from '../../hook/useRegion';
 import { LOCALE_DATA } from '../../locales/constants/constants';
 import { setDocumentation } from '../../redux/slices/GraphQLSlice';
+import { fetchSchema } from '../../utils/fetchSchema';
 
 const useDocumentation = () => {
   const { documentation, apiLink } = useAppSelector((store) => store.graphQL);
   const dispatch = useAppDispatch();
   const region = useRegion();
 
-  const handleDocsBtnClick = () => {
-    dispatch(setDocumentation(apiLink));
+  const handleDocsBtnClick = async () => {
+    const data = await fetchSchema({ url: apiLink });
+    const jsonData = JSON.stringify(data, null, 4);
+    dispatch(setDocumentation(jsonData));
   };
 
   const docsBtnText =
