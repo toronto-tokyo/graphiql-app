@@ -17,7 +17,7 @@ import { Suspense, lazy, useEffect } from 'react';
 import { fetchSchema } from '../../utils/fetchSchema';
 
 const Documentation = lazy(
-  () => import('../../components/SideTools/Documentation')
+  () => import('../../components/Documentation/Documentation')
 );
 
 function MainPage() {
