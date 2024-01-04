@@ -5,7 +5,6 @@ import { LOCALE_DATA } from '../../locales/constants/constants';
 
 const useDocumentation = () => {
   const { documentation } = useAppSelector((store) => store.graphQL);
-  const [isFetching] = useState(true);
   const [isContentVisible, setIsContentVisible] = useState(false);
   const region = useRegion();
 
@@ -20,7 +19,6 @@ const useDocumentation = () => {
     documentation,
     handleDocsBtnClick,
     docsBtnText,
-    isFetching,
     isContentVisible,
   };
 };
