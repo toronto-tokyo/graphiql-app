@@ -14,6 +14,7 @@ type InitialState = {
   variables: string;
   headers: string;
   documentation: string;
+  isDocsLoaded: boolean;
 };
 
 const initialState: InitialState = {
@@ -24,6 +25,7 @@ const initialState: InitialState = {
   variables: '',
   headers: '',
   documentation: '',
+  isDocsLoaded: false,
 };
 
 type FetchJSONParams = {
@@ -103,6 +105,9 @@ const GraphQLSlice = createSlice({
       console.log(action.payload);
       state.documentation = action.payload;
     },
+    setIsDocsLoaded(state, action: PayloadAction<boolean>) {
+      state.isDocsLoaded = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -124,4 +129,5 @@ export const {
   setVariables,
   setHeaders,
   setDocumentation,
+  setIsDocsLoaded,
 } = GraphQLSlice.actions;
