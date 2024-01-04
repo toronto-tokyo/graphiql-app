@@ -102,7 +102,6 @@ const GraphQLSlice = createSlice({
       state.headers = action.payload;
     },
     setDocumentation(state, action: PayloadAction<string>) {
-      console.log(action.payload);
       state.documentation = action.payload;
     },
     setIsDocsLoaded(state, action: PayloadAction<boolean>) {
