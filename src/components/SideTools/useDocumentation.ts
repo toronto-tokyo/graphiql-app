@@ -8,6 +8,7 @@ import { fetchSchema } from '../../utils/fetchSchema';
 const useDocumentation = () => {
   const { documentation, apiLink } = useAppSelector((store) => store.graphQL);
   const [isFetching, setIsFetching] = useState(true);
+  const [isContentVisible, setIsContentVisible] = useState(false);
   const dispatch = useAppDispatch();
   const region = useRegion();
 
@@ -22,9 +23,7 @@ const useDocumentation = () => {
   }, [apiLink, dispatch]);
 
   const handleDocsBtnClick = async () => {
-    const data = await fetchSchema({ url: apiLink });
-    const jsonData = JSON.stringify(data, null, 4);
-    dispatch(setDocumentation(jsonData));
+    setIsContentVisible((prev) => !prev);
   };
 
   const docsBtnText =
@@ -35,6 +34,7 @@ const useDocumentation = () => {
     handleDocsBtnClick,
     docsBtnText,
     isFetching,
+    isContentVisible,
   };
 };
 

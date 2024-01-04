@@ -2,8 +2,13 @@ import classes from './Documentation.module.css';
 import useDocumentation from './useDocumentation';
 
 const Documentation = () => {
-  const { documentation, handleDocsBtnClick, docsBtnText, isFetching } =
-    useDocumentation();
+  const {
+    documentation,
+    handleDocsBtnClick,
+    docsBtnText,
+    isFetching,
+    isContentVisible,
+  } = useDocumentation();
 
   const renderContent = () => {
     return isFetching ? (
@@ -15,11 +20,19 @@ const Documentation = () => {
         </div>
       </section>
     ) : (
-      <section className={classes.wrapper}>
+      <section
+        className={`${classes.wrapper} ${
+          isContentVisible ? classes.active : ''
+        }`}
+      >
         <div className={classes.documentationTools}>
           <button onClick={handleDocsBtnClick}>{docsBtnText}</button>
         </div>
-        <div className={classes.documentationContentWrap}>
+        <div
+          className={`${classes.documentationContentWrap} ${
+            isContentVisible ? classes.active : ''
+          }`}
+        >
           <textarea
             value={documentation}
             className={classes.documentationContent}

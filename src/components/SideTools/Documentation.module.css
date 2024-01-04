@@ -1,7 +1,11 @@
 .wrapper {
-  flex: 1 0 30%;
+  flex: 1 0 auto;
   display: flex;
   gap: 5px;
+}
+
+.wrapper.active {
+  flex: 1 0 30%;
 }
 
 .documentationTools {
@@ -9,6 +13,10 @@
 }
 
 .documentationContentWrap {
+  display: none;
+}
+
+.documentationContentWrap.active {
   display: flex;
   flex: 1 0 auto;
   flex-direction: column;
