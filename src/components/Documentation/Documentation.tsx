@@ -2,19 +2,19 @@ import classes from './Documentation.module.css';
 import useDocumentation from './useDocumentation';
 
 const Documentation = () => {
-  const { documentation, handleDocsBtnClick, docsBtnText, isContentVisible } =
+  const { documentation, handleDocsBtnClick, docsBtnText, showContent } =
     useDocumentation();
 
   return (
     <section
-      className={`${classes.wrapper} ${isContentVisible ? classes.active : ''}`}
+      className={`${classes.wrapper} ${showContent ? classes.active : ''}`}
     >
       <div className={classes.documentationTools}>
         <button onClick={handleDocsBtnClick}>{docsBtnText}</button>
       </div>
       <div
         className={`${classes.documentationContentWrap} ${
-          isContentVisible ? classes.active : ''
+          showContent ? classes.active : ''
         }`}
       >
         <textarea

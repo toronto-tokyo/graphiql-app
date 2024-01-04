@@ -5,11 +5,11 @@ import { LOCALE_DATA } from '../../locales/constants/constants';
 
 const useDocumentation = () => {
   const { documentation } = useAppSelector((store) => store.graphQL);
-  const [isContentVisible, setIsContentVisible] = useState(false);
+  const [showContent, setShowContent] = useState(false);
   const region = useRegion();
 
   const handleDocsBtnClick = async () => {
-    setIsContentVisible((prev) => !prev);
+    setShowContent((prev) => !prev);
   };
 
   const docsBtnText =
@@ -19,7 +19,7 @@ const useDocumentation = () => {
     documentation,
     handleDocsBtnClick,
     docsBtnText,
-    isContentVisible,
+    showContent,
   };
 };
 
