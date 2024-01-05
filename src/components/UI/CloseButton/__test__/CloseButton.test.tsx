@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import CloseButton from '../CloseButton';
+import userEvent from '@testing-library/user-event';
 
 describe('CloseButton component', () => {
   it('CloseButton component has passed aria-label attribute', () => {
@@ -11,5 +12,12 @@ describe('CloseButton component', () => {
     const handleClick = vi.fn();
     render(<CloseButton ariaLabel="close" clickHandler={handleClick} />);
     expect(screen.getByAltText('close-btn')).toBeInTheDocument();
+  });
+  it('CloseButton component calls clickHandler function, when user clicks button', async () => {
+    const handleClick = vi.fn();
+    const user = userEvent.setup();
+    render(<CloseButton ariaLabel="close" clickHandler={handleClick} />);
+    await user.click(screen.getByRole('button'));
+    expect(handleClick).toHaveBeenCalledTimes(1);
   });
 });
