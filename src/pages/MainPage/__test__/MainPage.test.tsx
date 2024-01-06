@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import store from '../../../redux/store';
 import MainPage from '../MainPage';
@@ -27,9 +27,8 @@ describe('MainPage component tests', () => {
         </RegionProvider>
       </Provider>
     );
-    await waitFor(() =>
-      expect(screen.queryByRole('button', { name: 'Docs' })).toBeInTheDocument()
-    );
+    const changeUrlBtn = await screen.findByRole('button', { name: 'Docs' });
+    expect(changeUrlBtn).toBeInTheDocument();
     await user.type(screen.getByDisplayValue(BASE_API_LINK), wrongApiUrl);
     await user.click(screen.getByRole('button', { name: 'Change URL' }));
     expect(screen.queryByRole('button', { name: 'Docs' })).toBeNull();
