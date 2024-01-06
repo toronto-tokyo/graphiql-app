@@ -5,6 +5,7 @@ import AuthContext from '../../hoc/context/AuthContext/AuthContext';
 import { IAuthContext } from '../../shared/types';
 import useRegion from '../../hook/useRegion';
 import { LOCALE_DATA } from '../../locales/constants/constants';
+import { Developers } from '../../components/Developers/Developers';
 
 function WelcomePage() {
   const region = useRegion();
@@ -37,6 +38,7 @@ function WelcomePage() {
           </>
         )}
       </ul>
+      <Developers />
     </div>
   );
 }
