@@ -83,6 +83,6 @@ export const fetchSchema = async ({ url }: IProps) => {
     const schema = parseSchema(data.data.__schema.types);
     return schema;
   } catch (error) {
-    throw new Error('Fetch schema error');
+    console.error('Fetch schema error');
   }
 };
