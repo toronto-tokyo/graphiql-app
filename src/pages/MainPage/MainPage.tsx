@@ -28,7 +28,6 @@ function MainPage() {
     variables,
     headers,
     isDocsLoaded,
-    documentation,
   } = useAppSelector((store) => store.graphQL);
   const dispatch = useAppDispatch();
 
@@ -40,7 +39,7 @@ function MainPage() {
         dispatch(setIsDocsLoaded(true));
       }
     })();
-  }, [apiLink, dispatch, documentation]);
+  }, [apiLink, dispatch]);
 
   const handleErrToastClose = () => {
     dispatch(setError(null));
