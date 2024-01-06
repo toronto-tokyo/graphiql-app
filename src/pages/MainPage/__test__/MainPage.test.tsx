@@ -17,9 +17,10 @@ describe('MainPage component tests', () => {
       </Provider>
     );
   });
-  it(`documentation section renders after successful schema request`, async () => {
+  it(`fetchSchema function is called after changing api url`, async () => {
     const user = userEvent.setup();
-    const wrongApiUrl = 'no-sense-message';
+    const spy = vi.spyOn(apiHooks, 'fetchSchema');
+    const apiUrl = 'no-sense-message';
     render(
       <Provider store={store}>
         <RegionProvider>
@@ -27,11 +28,11 @@ describe('MainPage component tests', () => {
         </RegionProvider>
       </Provider>
     );
-    const changeUrlBtn = await screen.findByRole('button', { name: 'Docs' });
-    expect(changeUrlBtn).toBeInTheDocument();
-    await user.type(screen.getByDisplayValue(BASE_API_LINK), wrongApiUrl);
+    const apiLinkInput = screen.getByDisplayValue(BASE_API_LINK);
+    await user.clear(apiLinkInput);
+    await user.type(apiLinkInput, apiUrl);
     await user.click(screen.getByRole('button', { name: 'Change URL' }));
-    expect(screen.queryByRole('button', { name: 'Docs' })).toBeNull();
+    expect(spy).toHaveBeenCalledTimes(2);
   });
   it('click on send button call fetchJSON function', async () => {
     const user = userEvent.setup();
@@ -44,6 +45,17 @@ describe('MainPage component tests', () => {
       </Provider>
     );
     await user.click(screen.getByRole('button', { name: 'Send' }));
+    expect(spy).toHaveBeenCalledTimes(1);
+  });
+  it('fetchSchema function is called after MainPage render automatically', async () => {
+    const spy = vi.spyOn(apiHooks, 'fetchSchema');
+    render(
+      <Provider store={store}>
+        <RegionProvider>
+          <MainPage />
+        </RegionProvider>
+      </Provider>
+    );
     expect(spy).toHaveBeenCalledTimes(1);
   });
 });
