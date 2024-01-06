@@ -48,5 +48,10 @@
       "label": "API URL",
       "changeApiBtn": "Change URL"
     }
+  },
+  "sideTools": {
+    "docs": {
+      "docsBtn": "Docs"
+    }
   }
 }

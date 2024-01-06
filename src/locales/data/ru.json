@@ -48,5 +48,10 @@
       "label": "API адрес",
       "changeApiBtn": "Изменить адрес"
     }
+  },
+  "sideTools": {
+    "docs": {
+      "docsBtn": "Документация"
+    }
   }
 }
