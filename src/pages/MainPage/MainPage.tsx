@@ -12,7 +12,9 @@ import EditorViewerSwitch from '../../components/EditorViewerSwitch/EditorViewer
 import pretty from '../../utils/normalizeQuery';
 import { Suspense, lazy, useEffect } from 'react';
 import Toasts from '../../components/Toasts/Toasts';
+import { PrimaryButton } from '../../components/UI/PrimaryButton/PrimaryButton';
 import useErrorToastClose from '../../utils/useErrorToastClose';
+
 
 const Documentation = lazy(
   () => import('../../components/Documentation/Documentation')
@@ -53,27 +55,30 @@ function MainPage() {
       )}
       <div className={classes.row}>
         <Suspense>{isDocsLoaded && <Documentation />}</Suspense>
-        <section className={classes.content}>
+        <div className={classes.content}>
           <ApiLinkForm
             value={apiLink}
             submitHandler={handleChangeURLBtnClick}
           />
           <div className={classes.row}>
             <EditorViewerSwitch className={classes.queryResponseSection} />
-            <section className={classes.controlPanel}>
-              <button onClick={clickSendButtonHandle} disabled={!apiLink}>
+            <div className={classes.controlPanel}>
+              <PrimaryButton
+                onClick={clickSendButtonHandle}
+                disabled={!apiLink}
+              >
                 Send
-              </button>
-              <button onClick={handlePrettify} disabled={!apiLink}>
+              </PrimaryButton>
+              <PrimaryButton onClick={handlePrettify} disabled={!apiLink}>
                 Prettify
-              </button>
-            </section>
+              </PrimaryButton>
+            </div>
             <EditorViewerSwitch
               className={classes.queryResponseSection}
               readOnly={true}
             />
           </div>
-        </section>
+        </div>
       </div>
     </div>
   );

@@ -1,3 +1,4 @@
+import { PrimaryButton } from '../UI/PrimaryButton/PrimaryButton';
 import Textarea from '../UI/Textarea/Textarea';
 import classes from './Documentation.module.css';
 import useDocumentation from './useDocumentation';
@@ -7,11 +8,11 @@ const Documentation = () => {
     useDocumentation();
 
   return (
-    <section
-      className={`${classes.wrapper} ${showContent ? classes.active : ''}`}
-    >
+    <div className={`${classes.wrapper} ${showContent ? classes.active : ''}`}>
       <div className={classes.documentationTools}>
-        <button onClick={handleDocsBtnClick}>{docsBtnText}</button>
+        <PrimaryButton onClick={handleDocsBtnClick}>
+          {docsBtnText}
+        </PrimaryButton>
       </div>
       <div
         className={`${classes.documentationContentWrap} ${
@@ -24,7 +25,7 @@ const Documentation = () => {
           readOnly
         />
       </div>
-    </section>
+    </div>
   );
 };
 
