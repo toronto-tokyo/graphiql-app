@@ -10,6 +10,7 @@ import {
 import Toast from '../../components/Toast/Toast';
 import errorIcon from '../../assets/error-icon.svg';
 import EditorViewerSwitch from '../../components/EditorViewerSwitch/EditorViewerSwitch';
+import pretty from '../../utils/normalizeQuery';
 
 function MainPage() {
   const { apiLink, query, jsonViewer, error } = useAppSelector(
@@ -34,7 +35,8 @@ function MainPage() {
   };
 
   const handlePrettify = () => {
-    console.log('PRETTY');
+    const prettifiedQuery = pretty(query);
+    dispatch(setQuery(prettifiedQuery.trim()));
   };
 
   return (
