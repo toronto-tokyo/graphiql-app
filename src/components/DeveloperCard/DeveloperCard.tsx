@@ -1,4 +1,3 @@
-import React from 'react';
 import classes from './DeveloperCard.module.css';
 import { DeveloperData } from '../../shared/developers-data';
 import { GitHubLink } from '../UI/GitHubLink/GitHubLink';

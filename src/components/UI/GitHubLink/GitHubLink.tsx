@@ -1,4 +1,3 @@
-import React from 'react';
 import classes from './GitHubLink.module.css';
 
 interface GitHubLinkProps {
