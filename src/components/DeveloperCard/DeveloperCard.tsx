@@ -10,6 +10,7 @@ export function DeveloperCard({ data }: DeveloperCardProps) {
     <div className={classes.card}>
       <div className={classes.photo}>
         <img
+          data-testid="avatar"
           className={classes.image}
           src={data.imgLink}
           alt={data.firstName}
