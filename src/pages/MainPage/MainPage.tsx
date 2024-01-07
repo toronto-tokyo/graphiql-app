@@ -3,8 +3,8 @@ import ApiLinkForm from '../../components/UI/ApiLinkForm/ApiLinkForm';
 import { useAppDispatch, useAppSelector } from '../../hook/useRedux';
 import {
   fetchJSON,
+  fetchSchema,
   setApiLink,
-  setDocumentation,
   setError,
   setIsDocsLoaded,
   setQuery,
@@ -14,7 +14,6 @@ import errorIcon from '../../assets/error-icon.svg';
 import EditorViewerSwitch from '../../components/EditorViewerSwitch/EditorViewerSwitch';
 import EditorTools from '../../components/EditorTools/EditorTools';
 import { Suspense, lazy, useEffect } from 'react';
-import { fetchSchema } from '../../utils/fetchSchema';
 
 const Documentation = lazy(
   () => import('../../components/Documentation/Documentation')
@@ -35,10 +34,10 @@ function MainPage() {
   useEffect(() => {
     (async () => {
       dispatch(setIsDocsLoaded(false));
-      const data = await fetchSchema({ url: apiLink });
-      const jsonData = JSON.stringify(data, null, 4);
-      dispatch(setDocumentation(jsonData));
-      dispatch(setIsDocsLoaded(true));
+      const asyncThunkRequest = await dispatch(fetchSchema({ url: apiLink }));
+      if (asyncThunkRequest.meta.requestStatus === 'fulfilled') {
+        dispatch(setIsDocsLoaded(true));
+      }
     })();
   }, [apiLink, dispatch]);
 
