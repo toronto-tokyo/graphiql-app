@@ -1,7 +1,36 @@
+@font-face {
+  font-family: 'Inter';
+  src: url('assets/fonts/Inter-Regular.ttf');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('assets/fonts/Inter-Bold.ttf');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Mono';
+  src: url('assets/fonts/SourceCodePro-Regular.ttf');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Mono';
+  src: url('assets/fonts/SourceCodePro-Bold.ttf');
+  font-weight: 700;
+}
+
 html,
 body {
   min-width: 320px;
   height: 100%;
+}
+
+body {
+  font-family: Inter, sans-serif;
+  font-size: 14px;
 }
 
 * {
