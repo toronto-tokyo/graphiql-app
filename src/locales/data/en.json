@@ -53,5 +53,12 @@
     "docs": {
       "docsBtn": "Docs"
     }
+  },
+  "notFoundPage": {
+    "Error": "Error 404",
+    "PageNotFound": "Page Not Found",
+    "brokeSomething": "We broke something!",
+    "orU": "Or you did...",
+    "BackToMain": "Back to main"
   }
 }

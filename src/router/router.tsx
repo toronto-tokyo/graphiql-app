@@ -26,8 +26,8 @@ const router = createBrowserRouter(
             </AuthPrivateRoute>
           }
         />
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
-      <Route path="*" element={<NotFoundPage />} />
     </Route>
   )
 );

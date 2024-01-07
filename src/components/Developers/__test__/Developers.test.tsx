@@ -8,6 +8,8 @@ describe('DeveloperCard component tests', () => {
   });
   it('component renders with correct amount of items', () => {
     render(<Developers />);
-    expect(screen.getAllByRole('img')).toHaveLength(DEVELOPERS_DATA.length);
+    expect(screen.getAllByTestId('avatar')).toHaveLength(
+      DEVELOPERS_DATA.length
+    );
   });
 });
