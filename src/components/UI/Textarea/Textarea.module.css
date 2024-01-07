@@ -1,0 +1,10 @@
+.textarea {
+  flex: 0 1 100%;
+  width: 100%;
+  resize: none;
+  padding: 10px;
+  background-color: transparent;
+  color: inherit;
+  border-radius: 5px;
+  border: none;
+}
