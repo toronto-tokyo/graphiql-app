@@ -22,6 +22,7 @@ type InitialState = {
   headers: string;
   documentation: string;
   isDocsLoaded: boolean;
+  isGraphQLDataLoading: boolean;
 };
 
 const initialState: InitialState = {
@@ -33,6 +34,7 @@ const initialState: InitialState = {
   headers: '',
   documentation: '',
   isDocsLoaded: false,
+  isGraphQLDataLoading: false,
 };
 
 type FetchJSONParams = {
@@ -146,6 +148,9 @@ const GraphQLSlice = createSlice({
     setIsDocsLoaded(state, action: PayloadAction<boolean>) {
       state.isDocsLoaded = action.payload;
     },
+    setIsGraphQLDataLoading(state, action: PayloadAction<boolean>) {
+      state.isGraphQLDataLoading = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -174,4 +179,5 @@ export const {
   setHeaders,
   setDocumentation,
   setIsDocsLoaded,
+  setIsGraphQLDataLoading,
 } = GraphQLSlice.actions;
