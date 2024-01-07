@@ -1,8 +1,8 @@
 import classes from './DeveloperCard.module.css';
-import { DeveloperData } from '../../shared/developers-data';
+import { Developer } from '../../shared/types';
 import { GitHubLink } from '../UI/GitHubLink/GitHubLink';
 interface DeveloperCardProps {
-  data: DeveloperData;
+  data: Developer;
 }
 
 export function DeveloperCard({ data }: DeveloperCardProps) {
@@ -10,6 +10,7 @@ export function DeveloperCard({ data }: DeveloperCardProps) {
     <div className={classes.card}>
       <div className={classes.photo}>
         <img
+          data-testid="avatar"
           className={classes.image}
           src={data.imgLink}
           alt={data.firstName}
