@@ -8,11 +8,16 @@ import { BASE_API_LINK, QUERY_TEMPLATE } from '../../shared/constants';
 import { parseSchema } from '../../utils/parseSchema';
 import { getIntrospectionQuery } from 'graphql';
 
+export interface IError {
+  id: number;
+  message: string;
+}
+
 type InitialState = {
   apiLink: string;
   query: string;
   jsonViewer: string;
-  error: null | string;
+  errors: IError[];
   variables: string;
   headers: string;
   documentation: string;
@@ -23,7 +28,7 @@ const initialState: InitialState = {
   apiLink: BASE_API_LINK,
   query: QUERY_TEMPLATE,
   jsonViewer: '',
-  error: null,
+  errors: [],
   variables: '',
   headers: '',
   documentation: '',
@@ -128,8 +133,8 @@ const GraphQLSlice = createSlice({
       console.log(action.payload);
       state.query = action.payload;
     },
-    setError(state, action: PayloadAction<string | null>) {
-      state.error = action.payload;
+    setError(state, action: PayloadAction<IError[]>) {
+      state.errors = action.payload;
     },
     setVariables(state, action: PayloadAction<string>) {
       state.variables = action.payload;
@@ -153,8 +158,11 @@ const GraphQLSlice = createSlice({
         state.documentation = action.payload;
       })
       .addMatcher(isError, (state, action: PayloadAction<string>) => {
-        state.error = action.payload;
-        console.log(state.error);
+        const error = {
+          id: Date.now(),
+          message: action.payload,
+        };
+        state.errors = [...state.errors, error];
       });
   },
 });
