@@ -7,10 +7,8 @@ import {
   setApiLink,
   setError,
   setIsDocsLoaded,
-  setQuery,
 } from '../../redux/slices/GraphQLSlice';
 import EditorViewerSwitch from '../../components/EditorViewerSwitch/EditorViewerSwitch';
-import EditorTools from '../../components/EditorTools/EditorTools';
 import { Suspense, lazy, useEffect } from 'react';
 import Toasts from '../../components/Toasts/Toasts';
 
@@ -19,15 +17,8 @@ const Documentation = lazy(
 );
 
 function MainPage() {
-  const {
-    apiLink,
-    query,
-    jsonViewer,
-    errors,
-    variables,
-    headers,
-    isDocsLoaded,
-  } = useAppSelector((store) => store.graphQL);
+  const { apiLink, query, errors, variables, headers, isDocsLoaded } =
+    useAppSelector((store) => store.graphQL);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -42,10 +33,6 @@ function MainPage() {
 
   const handleErrToastClose = (errorId: number) => {
     dispatch(setError(errors.filter((error) => error.id !== errorId)));
-  };
-
-  const handleQueryEditorChange = (value: string) => {
-    dispatch(setQuery(value));
   };
 
   const clickSendButtonHandle = () => {
@@ -69,25 +56,16 @@ function MainPage() {
             submitHandler={handleChangeURLBtnClick}
           />
           <div className={classes.row}>
-            <section
-              className={`${classes.queryResponseSection} ${classes.queryEditor}`}
-            >
-              <EditorViewerSwitch
-                value={query}
-                onChange={handleQueryEditorChange}
-              />
-              <EditorTools />
-            </section>
+            <EditorViewerSwitch className={classes.queryResponseSection} />
             <section className={classes.controlPanel}>
               <button onClick={clickSendButtonHandle} disabled={!apiLink}>
                 Send
               </button>
             </section>
-            <section
-              className={`${classes.queryResponseSection} ${classes.jsonViewer}`}
-            >
-              <EditorViewerSwitch value={jsonViewer} readOnly={true} />
-            </section>
+            <EditorViewerSwitch
+              className={classes.queryResponseSection}
+              readOnly={true}
+            />
           </div>
         </section>
       </div>
