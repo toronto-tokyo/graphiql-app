@@ -20,3 +20,11 @@ export interface ITab {
   id: number;
   label: string;
 }
+
+export interface Developer {
+  firstName: string;
+  position: string;
+  biography: string;
+  gitHubLink: string;
+  imgLink?: string;
+}
