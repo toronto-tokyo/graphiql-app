@@ -63,21 +63,18 @@
   },
   "developers": {
     "developerIlya": {
-      "imgLink": "https://github.com/mir-org/eCommerce-Application/blob/develop/src/assets/images/ilya-photo.jpg?raw=true",
       "firstName": "Илья",
       "position": "Тимлид",
       "biography": "Работал в логистике почти 2 года. Затем я решил изменить свою жизнь. Так я пришел в RSSchool, и это моя вторая попытка пройти этот курс.",
       "gitHubLink": "https://github.com/toronto-tokyo"
     },
     "developerVladislav": {
-      "imgLink": "https://github.com/mir-org/eCommerce-Application/blob/develop/src/assets/images/vlad-photo.jpg?raw=true",
       "firstName": "Владислав",
       "position": "Фронтенд разработчик",
       "biography": "После окончания учебы я несколько лет зарабатывал на жизнь трейдингом, затем пару лет у меня была своя небольшая аутсорсинговая компания, но это стало скучным, и теперь я пытаюсь найти свое место в разработке.",
       "gitHubLink": "https://github.com/GinezisNWD"
     },
     "developerMiroslav": {
-      "imgLink": "https://github.com/mir-org/eCommerce-Application/blob/develop/src/assets/images/mira-photo.jpg?raw=true",
       "firstName": "Мирослав",
       "position": "Фронтенд разработчик",
       "biography": "Несколько лет я работал техником ИТ-поддержки. Сейчас я изучаю фронтенд-разработку, чтобы бросить вызов самому себе и, возможно, открыть новый карьерный путь.",
