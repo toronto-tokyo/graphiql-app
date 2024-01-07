@@ -8,6 +8,10 @@ import { logInWithEmailAndPassword } from '../../firebase';
 import * as yup from 'yup';
 import useRegion from '../../hook/useRegion';
 import { LOCALE_DATA } from '../../locales/constants/constants';
+import { useAppDispatch, useAppSelector } from '../../hook/useRedux';
+import { setError } from '../../redux/slices/GraphQLSlice';
+import Toasts from '../Toasts/Toasts';
+import useErrorToastClose from '../../utils/useErrorToastClose';
 
 const signInFormSchema = yup.object().shape({
   email: yup
@@ -25,6 +29,8 @@ const signInFormSchema = yup.object().shape({
 });
 
 function SignInForm() {
+  const { errors } = useAppSelector((store) => store.graphQL);
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const region = useRegion();
   const [formData, setFormData] = useState({
@@ -44,28 +50,38 @@ function SignInForm() {
     try {
       await logInWithEmailAndPassword(formData.email, formData.password);
       navigate('/main');
-      console.log('Logged in successfully');
     } catch (error) {
-      console.error(error);
+      if (error instanceof Error) {
+        const err = { id: Date.now(), message: error.message };
+        dispatch(setError([...errors, err]));
+      } else {
+        const err = { id: Date.now(), message: 'Auth: something went wrong' };
+        dispatch(setError([...errors, err]));
+      }
     }
   };
   const isValid = signInFormSchema.isValidSync(formData);
 
   return (
-    <form className={styles.form} action="" onSubmit={handleSubmit}>
-      <InputEmail
-        value={formData.email}
-        onChange={(value: string) => handleChange('email', value)}
-      />
-      <InputPassword
-        value={formData.password}
-        onChange={(value: string) => handleChange('password', value)}
-      />
-      <SubmitButton
-        disabled={!isValid}
-        text={(region && LOCALE_DATA[region.region].form.button.signIn) ?? ''}
-      />
-    </form>
+    <>
+      {errors.length > 0 && (
+        <Toasts toastsData={errors} handleErrToastClose={useErrorToastClose} />
+      )}
+      <form className={styles.form} action="" onSubmit={handleSubmit}>
+        <InputEmail
+          value={formData.email}
+          onChange={(value: string) => handleChange('email', value)}
+        />
+        <InputPassword
+          value={formData.password}
+          onChange={(value: string) => handleChange('password', value)}
+        />
+        <SubmitButton
+          disabled={!isValid}
+          text={(region && LOCALE_DATA[region.region].form.button.signIn) ?? ''}
+        />
+      </form>
+    </>
   );
 }
 

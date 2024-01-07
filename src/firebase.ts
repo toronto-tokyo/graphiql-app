@@ -3,7 +3,6 @@ import {
   getAuth,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-  sendPasswordResetEmail,
   signOut,
 } from 'firebase/auth';
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
@@ -29,12 +28,8 @@ export const logInWithEmailAndPassword = async (
     await signInWithEmailAndPassword(auth, email, password);
   } catch (err) {
     if (err instanceof FirebaseError) {
-      console.error(err);
-      alert(err.message);
       throw err;
     } else {
-      console.error(err);
-      alert('An unexpected error occurred.');
       throw err;
     }
   }
@@ -56,32 +51,15 @@ export const registerWithEmailAndPassword = async (
     });
   } catch (err) {
     if (err instanceof FirebaseError) {
-      console.error(err);
-      alert(err.message);
+      throw err;
     } else {
-      console.error(err);
-      alert('An unexpected error occurred.');
+      throw err;
     }
   }
 };
 
 export const logout = () => {
   signOut(auth);
-};
-
-export const sendPasswordReset = async (email: string) => {
-  try {
-    await sendPasswordResetEmail(auth, email);
-    alert('Password reset link sent!');
-  } catch (err) {
-    if (err instanceof FirebaseError) {
-      console.error(err);
-      alert(err.message);
-    } else {
-      console.error(err);
-      alert('An unexpected error occurred.');
-    }
-  }
 };
 
 export default app;
