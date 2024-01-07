@@ -1,3 +1,15 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  max-width: 500px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
 .loader {
   display: inline-block;
   width: 80px;

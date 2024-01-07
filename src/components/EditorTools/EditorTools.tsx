@@ -1,4 +1,5 @@
 import Tabs from '../UI/Tabs/Tabs';
+import Textarea from '../UI/Textarea/Textarea';
 import classes from './EditorTools.module.css';
 import useEditorTools from './useEditorTools';
 
@@ -22,17 +23,17 @@ const EditorTools = () => {
         className={classes.toolBar}
       />
       {selectedTabId === 1 && (
-        <textarea
+        <Textarea
           className={classes.toolField}
           value={variables}
-          onChange={(e) => handleVariablesChange(e.target.value)}
+          onChange={handleVariablesChange}
         />
       )}
       {selectedTabId === 2 && (
-        <textarea
+        <Textarea
           className={classes.toolField}
           value={headers}
-          onChange={(e) => handleHeadersChange(e.target.value)}
+          onChange={handleHeadersChange}
         />
       )}
     </div>

@@ -54,7 +54,6 @@ export const fetchJSON = createAsyncThunk<
   'GraphQLSlice/fetchJSON',
   async ({ url, query, variables, headers }, { rejectWithValue }) => {
     try {
-      console.log(headers);
       const response = await fetch(url, {
         method: 'POST',
         headers: headers
@@ -130,7 +129,6 @@ const GraphQLSlice = createSlice({
       state.apiLink = action.payload;
     },
     setQuery(state, action: PayloadAction<string>) {
-      console.log(action.payload);
       state.query = action.payload;
     },
     setError(state, action: PayloadAction<IError[]>) {

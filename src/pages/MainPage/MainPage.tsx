@@ -5,7 +5,6 @@ import {
   fetchJSON,
   fetchSchema,
   setApiLink,
-  setError,
   setIsDocsLoaded,
   setQuery,
 } from '../../redux/slices/GraphQLSlice';
@@ -14,6 +13,8 @@ import pretty from '../../utils/normalizeQuery';
 import { Suspense, lazy, useEffect } from 'react';
 import Toasts from '../../components/Toasts/Toasts';
 import { PrimaryButton } from '../../components/UI/PrimaryButton/PrimaryButton';
+import useErrorToastClose from '../../utils/useErrorToastClose';
+
 
 const Documentation = lazy(
   () => import('../../components/Documentation/Documentation')
@@ -34,10 +35,6 @@ function MainPage() {
     })();
   }, [apiLink, dispatch]);
 
-  const handleErrToastClose = (errorId: number) => {
-    dispatch(setError(errors.filter((error) => error.id !== errorId)));
-  };
-
   const clickSendButtonHandle = () => {
     dispatch(fetchJSON({ url: apiLink, query, variables, headers }));
   };
@@ -54,7 +51,7 @@ function MainPage() {
   return (
     <div className={classes.wrapper}>
       {errors.length > 0 && (
-        <Toasts toastsData={errors} handleErrToastClose={handleErrToastClose} />
+        <Toasts toastsData={errors} handleErrToastClose={useErrorToastClose} />
       )}
       <div className={classes.row}>
         <Suspense>{isDocsLoaded && <Documentation />}</Suspense>
