@@ -21,10 +21,10 @@ function SignUpPage() {
     return <div className={classes.loader}></div>;
   }
   return (
-    <>
+    <div className={classes.wrapper}>
       <h1>{region && LOCALE_DATA[region.region].signUpPage.text.signUp}</h1>
       <SignUpForm />
-    </>
+    </div>
   );
 }
 

@@ -21,10 +21,10 @@ function SignInPage() {
     return <div className={classes.loader}></div>;
   }
   return (
-    <>
+    <div className={classes.wrapper}>
       <h1>{region && LOCALE_DATA[region.region].signInPage.text.signIn}</h1>
       <SignInForm />
-    </>
+    </div>
   );
 }
 
