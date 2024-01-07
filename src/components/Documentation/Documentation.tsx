@@ -1,3 +1,4 @@
+import Textarea from '../UI/Textarea/Textarea';
 import classes from './Documentation.module.css';
 import useDocumentation from './useDocumentation';
 
@@ -17,7 +18,7 @@ const Documentation = () => {
           showContent ? classes.active : ''
         }`}
       >
-        <textarea
+        <Textarea
           value={documentation}
           className={classes.documentationContent}
           readOnly
