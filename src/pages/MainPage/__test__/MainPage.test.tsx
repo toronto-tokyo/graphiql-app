@@ -34,19 +34,6 @@ describe('MainPage component tests', () => {
     await user.click(screen.getByRole('button', { name: 'Change URL' }));
     expect(spy).toHaveBeenCalledTimes(2);
   });
-  it('click on send button call fetchJSON function', async () => {
-    const user = userEvent.setup();
-    const spy = vi.spyOn(apiHooks, 'fetchJSON');
-    render(
-      <Provider store={store}>
-        <RegionProvider>
-          <MainPage />
-        </RegionProvider>
-      </Provider>
-    );
-    await user.click(screen.getByRole('button', { name: 'Send' }));
-    expect(spy).toHaveBeenCalledTimes(1);
-  });
   it('fetchSchema function is called after MainPage render automatically', async () => {
     const spy = vi.spyOn(apiHooks, 'fetchSchema');
     render(

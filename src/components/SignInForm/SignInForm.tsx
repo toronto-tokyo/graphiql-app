@@ -2,7 +2,6 @@ import { useNavigate } from 'react-router-dom';
 import InputEmail from '../UI/InputEmail/InputEmail';
 import InputPassword from '../UI/InputPassword/InputPassword';
 import styles from './SignInForm.module.css';
-import SubmitButton from '../UI/SubmitButton/SubmitButton';
 import { useState } from 'react';
 import { logInWithEmailAndPassword } from '../../firebase';
 import * as yup from 'yup';
@@ -12,6 +11,7 @@ import { useAppDispatch, useAppSelector } from '../../hook/useRedux';
 import { setError } from '../../redux/slices/GraphQLSlice';
 import Toasts from '../Toasts/Toasts';
 import useErrorToastClose from '../../utils/useErrorToastClose';
+import { PrimaryButton } from '../UI/PrimaryButton/PrimaryButton';
 
 const signInFormSchema = yup.object().shape({
   email: yup
@@ -76,10 +76,9 @@ function SignInForm() {
           value={formData.password}
           onChange={(value: string) => handleChange('password', value)}
         />
-        <SubmitButton
-          disabled={!isValid}
-          text={(region && LOCALE_DATA[region.region].form.button.signIn) ?? ''}
-        />
+        <PrimaryButton disabled={!isValid} type="submit">
+          {(region && LOCALE_DATA[region.region].form.button.signIn) ?? ''}
+        </PrimaryButton>
       </form>
     </>
   );

@@ -9,6 +9,10 @@
   padding: 40px 40px 40px 10px;
 }
 
+.text {
+  color: var(--grey-color);
+}
+
 .contentWrapper {
   display: flex;
   align-items: center;

@@ -1,5 +1,6 @@
 import { ReactNode, useEffect, useState } from 'react';
 import classes from './Header.module.css';
+import ContentWrapper from '../UI/ContentWrapper/ContentWrapper';
 
 interface IProps {
   children: ReactNode;
@@ -19,7 +20,9 @@ function Header({ children }: IProps) {
   }, []);
   return (
     <header className={`${classes.header} ${isScrolled ? classes.scroll : ''}`}>
-      {children}
+      <ContentWrapper>
+        <div className={classes.innerContent}>{children}</div>
+      </ContentWrapper>
     </header>
   );
 }

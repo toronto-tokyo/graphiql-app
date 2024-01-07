@@ -7,6 +7,7 @@ import useRegion from '../../hook/useRegion';
 import { LOCALE_DATA } from '../../locales/constants/constants';
 import { Developers } from '../../components/Developers/Developers';
 import Loader from '../../components/Loader/Loader';
+import { PrimaryButton } from '../../components/UI/PrimaryButton/PrimaryButton';
 
 function WelcomePage() {
   const region = useRegion();
@@ -17,28 +18,34 @@ function WelcomePage() {
   }
   return (
     <div className={classes.wrapper}>
-      <ul className={classes.list}>
+      <div className={classes.list}>
         {user ? (
-          <li className={classes.listElement}>
-            <Link to="/main" className={classes.link}>
-              {region && LOCALE_DATA[region.region].welcomePage.link.mainPage}
-            </Link>
-          </li>
+          <div className={classes.listElement}>
+            <PrimaryButton>
+              <Link to="/main" className={classes.link}>
+                {region && LOCALE_DATA[region.region].welcomePage.link.mainPage}
+              </Link>
+            </PrimaryButton>
+          </div>
         ) : (
           <>
-            <li className={classes.listElement}>
-              <Link to="/sign-in" className={classes.link}>
-                {region && LOCALE_DATA[region.region].welcomePage.link.signIn}
-              </Link>
-            </li>
-            <li className={classes.listElement}>
-              <Link to="/sign-up" className={classes.link}>
-                {region && LOCALE_DATA[region.region].welcomePage.link.signUp}
-              </Link>
-            </li>
+            <div className={classes.listElement}>
+              <PrimaryButton>
+                <Link to="/sign-in" className={classes.link}>
+                  {region && LOCALE_DATA[region.region].welcomePage.link.signIn}
+                </Link>
+              </PrimaryButton>
+            </div>
+            <div className={classes.listElement}>
+              <PrimaryButton>
+                <Link to="/sign-up" className={classes.link}>
+                  {region && LOCALE_DATA[region.region].welcomePage.link.signUp}
+                </Link>
+              </PrimaryButton>
+            </div>
           </>
         )}
-      </ul>
+      </div>
       <Developers />
     </div>
   );

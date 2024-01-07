@@ -13,7 +13,7 @@ const Toast = ({ children, imgPath, onClose }: IProps) => {
     <div className={classes.wrapper}>
       <div className={classes.contentWrapper}>
         <img className={classes.icon} src={imgPath} alt="toast-img" />
-        <span>{children}</span>
+        <span className={classes.text}>{children}</span>
       </div>
       <CloseButton ariaLabel="Close" clickHandler={onClose} />
     </div>

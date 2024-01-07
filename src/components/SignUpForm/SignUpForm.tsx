@@ -1,6 +1,5 @@
 import InputPassword from '../UI/InputPassword/InputPassword';
 import styles from './SignUpForm.module.css';
-import SubmitButton from '../UI/SubmitButton/SubmitButton';
 import InputName from '../UI/InputName/InputName';
 import { useState } from 'react';
 import { registerWithEmailAndPassword } from '../../firebase';
@@ -12,6 +11,7 @@ import { useAppDispatch, useAppSelector } from '../../hook/useRedux';
 import { setError } from '../../redux/slices/GraphQLSlice';
 import useErrorToastClose from '../../utils/useErrorToastClose';
 import Toasts from '../Toasts/Toasts';
+import { PrimaryButton } from '../UI/PrimaryButton/PrimaryButton';
 
 const signUpFormSchema = yup.object().shape({
   name: yup
@@ -80,10 +80,9 @@ function SignUpForm() {
           value={formData.password}
           onChange={(value: string) => handleChange('password', value)}
         />
-        <SubmitButton
-          disabled={!isValid}
-          text={(region && LOCALE_DATA[region.region].form.button.signUp) ?? ''}
-        />
+        <PrimaryButton disabled={!isValid} type="submit">
+          {(region && LOCALE_DATA[region.region].form.button.signUp) ?? ''}
+        </PrimaryButton>
       </form>
     </>
   );

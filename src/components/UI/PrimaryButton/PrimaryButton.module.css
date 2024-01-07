@@ -7,3 +7,16 @@
   border-radius: 5px;
   cursor: pointer;
 }
+
+.myBtn:hover {
+  text-decoration: underline;
+  color: var(--green-color);
+  background: var(--grey-color);
+}
+
+.myBtn:disabled {
+  color: var(--grey-color);
+  background: var(--grey-color2);
+  cursor: default;
+  text-decoration: none;
+}

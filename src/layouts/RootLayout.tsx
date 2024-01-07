@@ -10,6 +10,7 @@ import ErrorFallback from '../components/ErrorFallback/ErrorFallback';
 import { IAuthContext } from '../shared/types';
 import AuthContext from '../hoc/context/AuthContext/AuthContext';
 import { useContext } from 'react';
+import { PrimaryButton } from '../components/UI/PrimaryButton/PrimaryButton';
 
 function RootLayout() {
   const region = useRegion();
@@ -30,9 +31,9 @@ function RootLayout() {
           {region && LOCALE_DATA[region.region].header.link.welcome}
         </NavLink>
         {user ? (
-          <div onClick={logout}>
+          <PrimaryButton onClick={logout}>
             {region && LOCALE_DATA[region.region].header.link.signOut}
-          </div>
+          </PrimaryButton>
         ) : null}
         <select onChange={onSelectChange}>
           {Object.keys(REGIONS).map((key) => {
