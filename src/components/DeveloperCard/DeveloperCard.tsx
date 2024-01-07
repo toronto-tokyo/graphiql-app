@@ -1,8 +1,8 @@
 import classes from './DeveloperCard.module.css';
-import { DeveloperData } from '../../shared/developers-data';
+import { Developer } from '../../shared/types';
 import { GitHubLink } from '../UI/GitHubLink/GitHubLink';
 interface DeveloperCardProps {
-  data: DeveloperData;
+  data: Developer;
 }
 
 export function DeveloperCard({ data }: DeveloperCardProps) {
