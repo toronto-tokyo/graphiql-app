@@ -15,7 +15,6 @@ import Toasts from '../../components/Toasts/Toasts';
 import { PrimaryButton } from '../../components/UI/PrimaryButton/PrimaryButton';
 import useErrorToastClose from '../../utils/useErrorToastClose';
 
-
 const Documentation = lazy(
   () => import('../../components/Documentation/Documentation')
 );
