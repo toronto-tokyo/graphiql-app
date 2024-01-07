@@ -6,6 +6,7 @@ import {
   fetchSchema,
   setApiLink,
   setIsDocsLoaded,
+  setIsGraphQLDataLoading,
   setQuery,
 } from '../../redux/slices/GraphQLSlice';
 import EditorViewerSwitch from '../../components/EditorViewerSwitch/EditorViewerSwitch';
@@ -14,7 +15,6 @@ import { Suspense, lazy, useEffect } from 'react';
 import Toasts from '../../components/Toasts/Toasts';
 import { PrimaryButton } from '../../components/UI/PrimaryButton/PrimaryButton';
 import useErrorToastClose from '../../utils/useErrorToastClose';
-
 
 const Documentation = lazy(
   () => import('../../components/Documentation/Documentation')
@@ -35,8 +35,10 @@ function MainPage() {
     })();
   }, [apiLink, dispatch]);
 
-  const clickSendButtonHandle = () => {
-    dispatch(fetchJSON({ url: apiLink, query, variables, headers }));
+  const clickSendButtonHandle = async () => {
+    dispatch(setIsGraphQLDataLoading(true));
+    await dispatch(fetchJSON({ url: apiLink, query, variables, headers }));
+    dispatch(setIsGraphQLDataLoading(false));
   };
 
   const handleChangeURLBtnClick = (value: string) => {
