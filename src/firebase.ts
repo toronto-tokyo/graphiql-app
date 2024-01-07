@@ -1,4 +1,4 @@
-import { FirebaseError, initializeApp } from 'firebase/app';
+import { initializeApp } from 'firebase/app';
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -8,12 +8,12 @@ import {
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyD5QAwbJYbNzA1aA_Hamahg9hUZ9plfGvY',
-  authDomain: 'graphiql-bf6de.firebaseapp.com',
-  projectId: 'graphiql-bf6de',
-  storageBucket: 'graphiql-bf6de.appspot.com',
-  messagingSenderId: '212188522180',
-  appId: '1:212188522180:web:04ce868ee58cc95bfe8b91',
+  apiKey: 'AIzaSyBWsgrsZygqjUCgj3m-UsEaXE_0dektanc',
+  authDomain: 'graphiqlrelease.firebaseapp.com',
+  projectId: 'graphiqlrelease',
+  storageBucket: 'graphiqlrelease.appspot.com',
+  messagingSenderId: '729783132956',
+  appId: '1:729783132956:web:d3e4b10de44f38976490d9',
 };
 
 const app = initializeApp(firebaseConfig);
@@ -24,15 +24,7 @@ export const logInWithEmailAndPassword = async (
   email: string,
   password: string
 ) => {
-  try {
-    await signInWithEmailAndPassword(auth, email, password);
-  } catch (err) {
-    if (err instanceof FirebaseError) {
-      throw err;
-    } else {
-      throw err;
-    }
-  }
+  await signInWithEmailAndPassword(auth, email, password);
 };
 
 export const registerWithEmailAndPassword = async (
@@ -40,22 +32,14 @@ export const registerWithEmailAndPassword = async (
   email: string,
   password: string
 ) => {
-  try {
-    const res = await createUserWithEmailAndPassword(auth, email, password);
-    const user = res.user;
-    await addDoc(collection(db, 'users'), {
-      uid: user.uid,
-      name,
-      authProvider: 'local',
-      email,
-    });
-  } catch (err) {
-    if (err instanceof FirebaseError) {
-      throw err;
-    } else {
-      throw err;
-    }
-  }
+  const res = await createUserWithEmailAndPassword(auth, email, password);
+  const user = res.user;
+  await addDoc(collection(db, 'users'), {
+    uid: user.uid,
+    name,
+    authProvider: 'local',
+    email,
+  });
 };
 
 export const logout = () => {
