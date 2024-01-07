@@ -5,11 +5,14 @@
 }
 
 .main {
+  max-width: 1280px;
+  width: 100%;
   flex: 1 0 auto;
   display: flex;
   flex-direction: column;
   position: relative;
   padding: 10px 20px;
+  align-self: center;
 }
 
 @media (max-width: 760px) {
