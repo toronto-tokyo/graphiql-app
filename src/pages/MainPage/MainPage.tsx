@@ -7,8 +7,10 @@ import {
   setApiLink,
   setError,
   setIsDocsLoaded,
+  setQuery
 } from '../../redux/slices/GraphQLSlice';
 import EditorViewerSwitch from '../../components/EditorViewerSwitch/EditorViewerSwitch';
+import pretty from '../../utils/normalizeQuery';
 import { Suspense, lazy, useEffect } from 'react';
 import Toasts from '../../components/Toasts/Toasts';
 
@@ -43,6 +45,11 @@ function MainPage() {
     dispatch(setApiLink(value));
   };
 
+  const handlePrettify = () => {
+    const prettifiedQuery = pretty(query);
+    dispatch(setQuery(prettifiedQuery.trim()));
+  };
+
   return (
     <div className={classes.wrapper}>
       {errors.length > 0 && (
@@ -60,6 +67,9 @@ function MainPage() {
             <section className={classes.controlPanel}>
               <button onClick={clickSendButtonHandle} disabled={!apiLink}>
                 Send
+              </button>
+              <button onClick={handlePrettify} disabled={!apiLink}>
+                Prettify
               </button>
             </section>
             <EditorViewerSwitch
