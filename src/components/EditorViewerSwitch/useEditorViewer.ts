@@ -2,7 +2,9 @@ import { useAppDispatch, useAppSelector } from '../../hook/useRedux';
 import { setQuery } from '../../redux/slices/GraphQLSlice';
 
 const useEditorViewerSwitch = () => {
-  const { query, jsonViewer } = useAppSelector((store) => store.graphQL);
+  const { query, jsonViewer, isGraphQLDataLoading } = useAppSelector(
+    (store) => store.graphQL
+  );
   const dispatch = useAppDispatch();
 
   const handleQueryEditorChange = (value: string) => {
@@ -12,6 +14,7 @@ const useEditorViewerSwitch = () => {
   return {
     query,
     jsonViewer,
+    isGraphQLDataLoading,
     handleQueryEditorChange,
   };
 };

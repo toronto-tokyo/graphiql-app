@@ -6,13 +6,14 @@ import { IAuthContext } from '../../shared/types';
 import useRegion from '../../hook/useRegion';
 import { LOCALE_DATA } from '../../locales/constants/constants';
 import { Developers } from '../../components/Developers/Developers';
+import Loader from '../../components/Loader/Loader';
 
 function WelcomePage() {
   const region = useRegion();
   const authContext = useContext<IAuthContext | null>(AuthContext);
   const { user, loading } = authContext as IAuthContext;
   if (loading) {
-    return <div className={classes.loader}></div>;
+    return <Loader />;
   }
   return (
     <div className={classes.wrapper}>
