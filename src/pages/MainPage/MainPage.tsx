@@ -15,6 +15,8 @@ import { Suspense, lazy, useEffect } from 'react';
 import Toasts from '../../components/Toasts/Toasts';
 import { PrimaryButton } from '../../components/UI/PrimaryButton/PrimaryButton';
 import useErrorToastClose from '../../utils/useErrorToastClose';
+import sendIcon from '../../assets/sendIcon.png';
+import prettyIcon from '../../assets/prettyIcon.png';
 
 const Documentation = lazy(
   () => import('../../components/Documentation/Documentation')
@@ -69,10 +71,14 @@ function MainPage() {
                 onClick={clickSendButtonHandle}
                 disabled={!apiLink}
               >
-                Send
+                <img className={classes.icon} src={sendIcon} alt="sendIcon" />
               </PrimaryButton>
               <PrimaryButton onClick={handlePrettify} disabled={!apiLink}>
-                Prettify
+                <img
+                  className={classes.icon}
+                  src={prettyIcon}
+                  alt="prettyIcon"
+                />
               </PrimaryButton>
             </div>
             <EditorViewerSwitch
