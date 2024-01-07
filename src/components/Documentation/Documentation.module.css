@@ -1,0 +1,28 @@
+.wrapper {
+  flex: 1 0 auto;
+  display: flex;
+  gap: 5px;
+}
+
+.wrapper.active {
+  flex: 1 0 30%;
+}
+
+.documentationTools {
+  align-self: flex-start;
+}
+
+.documentationContentWrap {
+  display: none;
+}
+
+.documentationContentWrap.active {
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+}
+
+.documentationContent {
+  flex: 0 1 100%;
+  resize: none;
+}

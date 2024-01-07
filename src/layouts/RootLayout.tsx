@@ -49,7 +49,7 @@ function RootLayout() {
           <Outlet />
         </ErrorBoundary>
       </main>
-      <Footer>footer</Footer>
+      <Footer></Footer>
     </div>
   );
 }

@@ -5,47 +5,116 @@ import {
   UnknownAction,
 } from '@reduxjs/toolkit';
 import { BASE_API_LINK, QUERY_TEMPLATE } from '../../shared/constants';
+import { parseSchema } from '../../utils/parseSchema';
+import { getIntrospectionQuery } from 'graphql';
+
+export interface IError {
+  id: number;
+  message: string;
+}
 
 type InitialState = {
   apiLink: string;
   query: string;
   jsonViewer: string;
-  error: null | string;
+  errors: IError[];
+  variables: string;
+  headers: string;
+  documentation: string;
+  isDocsLoaded: boolean;
 };
 
 const initialState: InitialState = {
   apiLink: BASE_API_LINK,
   query: QUERY_TEMPLATE,
   jsonViewer: '',
-  error: null,
+  errors: [],
+  variables: '',
+  headers: '',
+  documentation: '',
+  isDocsLoaded: false,
 };
 
 type FetchJSONParams = {
   url: string;
   query: string;
+  variables: string;
+  headers: string;
+};
+
+type FetchSchemaParams = {
+  url: string;
 };
 
 export const fetchJSON = createAsyncThunk<
   string,
   FetchJSONParams,
   { rejectValue: string }
->('GraphQLSlice/fetchJSON', async ({ url, query }, { rejectWithValue }) => {
+>(
+  'GraphQLSlice/fetchJSON',
+  async ({ url, query, variables, headers }, { rejectWithValue }) => {
+    try {
+      console.log(headers);
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: headers
+          ? {
+              'Content-type': 'application/json',
+              ...JSON.parse(headers),
+            }
+          : {
+              'Content-type': 'application/json',
+            },
+        body: JSON.stringify(
+          variables
+            ? {
+                query,
+                variables: JSON.parse(variables),
+              }
+            : {
+                query,
+              }
+        ),
+      });
+      if (!response.ok) {
+        const message = (await response.json()).errors[0].message as string;
+        return rejectWithValue(message);
+      }
+      const data = await response.json();
+      return JSON.stringify(data, null, 4);
+    } catch (error) {
+      return rejectWithValue('Something went wrong!');
+    }
+  }
+);
+
+export const fetchSchema = createAsyncThunk<
+  string,
+  FetchSchemaParams,
+  { rejectValue: string }
+>('GraphQLSlice/fetchSchema', async ({ url }, { rejectWithValue }) => {
   try {
-    const request = await fetch(url, {
+    const response = await fetch(url, {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
       },
-      body: JSON.stringify({ query }),
+      body: JSON.stringify({
+        query: getIntrospectionQuery(),
+      }),
     });
-    if (!request.ok) {
-      const message = (await request.json()).errors[0].message as string;
-      return rejectWithValue(message);
+    const data = await response.json();
+    if (!response.ok) {
+      const message = (await response.json()).errors[0].message as string;
+      return rejectWithValue(`Schema: ${message}`);
     }
-    const data = await request.json();
-    return JSON.stringify(data, null, 4);
+    const schema = parseSchema(data.data.__schema.types);
+    return JSON.stringify(schema, null, 4);
   } catch (error) {
-    return rejectWithValue('Something went wrong!');
+    if (error instanceof Error) {
+      return rejectWithValue(`Schema: ${error.message}`);
+    }
+    return rejectWithValue('`Schema: something went wrong!');
   }
 });
 
@@ -64,8 +133,20 @@ const GraphQLSlice = createSlice({
       console.log(action.payload);
       state.query = action.payload;
     },
-    setError(state, action: PayloadAction<string | null>) {
-      state.error = action.payload;
+    setError(state, action: PayloadAction<IError[]>) {
+      state.errors = action.payload;
+    },
+    setVariables(state, action: PayloadAction<string>) {
+      state.variables = action.payload;
+    },
+    setHeaders(state, action: PayloadAction<string>) {
+      state.headers = action.payload;
+    },
+    setDocumentation(state, action: PayloadAction<string>) {
+      state.documentation = action.payload;
+    },
+    setIsDocsLoaded(state, action: PayloadAction<boolean>) {
+      state.isDocsLoaded = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -73,12 +154,26 @@ const GraphQLSlice = createSlice({
       .addCase(fetchJSON.fulfilled, (state, action) => {
         state.jsonViewer = action.payload;
       })
+      .addCase(fetchSchema.fulfilled, (state, action) => {
+        state.documentation = action.payload;
+      })
       .addMatcher(isError, (state, action: PayloadAction<string>) => {
-        state.error = action.payload;
-        console.log(state.error);
+        const error = {
+          id: Date.now(),
+          message: action.payload,
+        };
+        state.errors = [...state.errors, error];
       });
   },
 });
 
 export default GraphQLSlice.reducer;
-export const { setApiLink, setQuery, setError } = GraphQLSlice.actions;
+export const {
+  setApiLink,
+  setQuery,
+  setError,
+  setVariables,
+  setHeaders,
+  setDocumentation,
+  setIsDocsLoaded,
+} = GraphQLSlice.actions;

@@ -1,37 +1,48 @@
 import classes from './MainPage.module.css';
-import ApiLinkInput from '../../components/UI/ApiLinkInput/ApiLinkInput';
+import ApiLinkForm from '../../components/UI/ApiLinkForm/ApiLinkForm';
 import { useAppDispatch, useAppSelector } from '../../hook/useRedux';
 import {
   fetchJSON,
+  fetchSchema,
   setApiLink,
   setError,
-  setQuery,
+  setIsDocsLoaded,
+  setQuery
 } from '../../redux/slices/GraphQLSlice';
-import Toast from '../../components/Toast/Toast';
-import errorIcon from '../../assets/error-icon.svg';
 import EditorViewerSwitch from '../../components/EditorViewerSwitch/EditorViewerSwitch';
 import pretty from '../../utils/normalizeQuery';
+import { Suspense, lazy, useEffect } from 'react';
+import Toasts from '../../components/Toasts/Toasts';
+
+const Documentation = lazy(
+  () => import('../../components/Documentation/Documentation')
+);
 
 function MainPage() {
-  const { apiLink, query, jsonViewer, error } = useAppSelector(
-    (store) => store.graphQL
-  );
+  const { apiLink, query, errors, variables, headers, isDocsLoaded } =
+    useAppSelector((store) => store.graphQL);
   const dispatch = useAppDispatch();
 
-  const handleErrToastClose = () => {
-    dispatch(setError(null));
-  };
+  useEffect(() => {
+    (async () => {
+      dispatch(setIsDocsLoaded(false));
+      const asyncThunkRequest = await dispatch(fetchSchema({ url: apiLink }));
+      if (asyncThunkRequest.meta.requestStatus === 'fulfilled') {
+        dispatch(setIsDocsLoaded(true));
+      }
+    })();
+  }, [apiLink, dispatch]);
 
-  const handleApiLinkChange = (value: string) => {
-    dispatch(setApiLink(value));
-  };
-
-  const handleQueryEditorChange = (value: string) => {
-    dispatch(setQuery(value));
+  const handleErrToastClose = (errorId: number) => {
+    dispatch(setError(errors.filter((error) => error.id !== errorId)));
   };
 
   const clickSendButtonHandle = () => {
-    dispatch(fetchJSON({ url: apiLink, query }));
+    dispatch(fetchJSON({ url: apiLink, query, variables, headers }));
+  };
+
+  const handleChangeURLBtnClick = (value: string) => {
+    dispatch(setApiLink(value));
   };
 
   const handlePrettify = () => {
@@ -41,27 +52,32 @@ function MainPage() {
 
   return (
     <div className={classes.wrapper}>
-      {error && (
-        <Toast imgPath={errorIcon} onClose={handleErrToastClose}>
-          {error}
-        </Toast>
+      {errors.length > 0 && (
+        <Toasts toastsData={errors} handleErrToastClose={handleErrToastClose} />
       )}
-      <ApiLinkInput
-        label="API Link"
-        value={apiLink}
-        changeHandler={handleApiLinkChange}
-      />
       <div className={classes.row}>
-        <EditorViewerSwitch value={query} onChange={handleQueryEditorChange} />
-        <section className={classes.controlPanel}>
-          <button onClick={clickSendButtonHandle} disabled={!apiLink}>
-            Send
-          </button>
-          <button onClick={handlePrettify} disabled={!apiLink}>
-            Prettify
-          </button>
+        <Suspense>{isDocsLoaded && <Documentation />}</Suspense>
+        <section className={classes.content}>
+          <ApiLinkForm
+            value={apiLink}
+            submitHandler={handleChangeURLBtnClick}
+          />
+          <div className={classes.row}>
+            <EditorViewerSwitch className={classes.queryResponseSection} />
+            <section className={classes.controlPanel}>
+              <button onClick={clickSendButtonHandle} disabled={!apiLink}>
+                Send
+              </button>
+              <button onClick={handlePrettify} disabled={!apiLink}>
+                Prettify
+              </button>
+            </section>
+            <EditorViewerSwitch
+              className={classes.queryResponseSection}
+              readOnly={true}
+            />
+          </div>
         </section>
-        <EditorViewerSwitch value={jsonViewer} readOnly={true} />
       </div>
     </div>
   );

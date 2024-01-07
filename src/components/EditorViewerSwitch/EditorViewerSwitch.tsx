@@ -1,22 +1,39 @@
+import EditorTools from '../EditorTools/EditorTools';
+import Textarea from '../UI/Textarea/Textarea';
 import classes from './EditorViewerSwitch.module.css';
+import useEditorViewerSwitch from './useEditorViewer';
 
 interface IProps {
-  value: string;
   onChange?: (value: string) => void;
   readOnly?: boolean;
+  className?: string;
 }
 
-const EditorViewerSwitch = ({ value, onChange, readOnly }: IProps) => {
-  return (
-    <section className={classes.wrapper}>
-      <textarea
-        className={`${classes.editorViewer} ${
-          readOnly ? classes.jsonViewer : classes.queryEditor
-        }`}
-        value={value}
-        onChange={(e) => onChange?.(e.target.value)}
+const EditorViewerSwitch = ({ readOnly, className }: IProps) => {
+  const { query, jsonViewer, handleQueryEditorChange } =
+    useEditorViewerSwitch();
+
+  return readOnly ? (
+    <section
+      className={`${classes.jsonViewer} ${className ? className : className}`}
+    >
+      <Textarea
+        className={classes.textarea}
         readOnly={readOnly}
+        value={jsonViewer}
       />
+    </section>
+  ) : (
+    <section
+      className={`${classes.queryEditor} ${className ? className : className}`}
+    >
+      <Textarea
+        className={classes.textarea}
+        onChange={handleQueryEditorChange}
+        readOnly={readOnly}
+        value={query}
+      />
+      <EditorTools />
     </section>
   );
 };
