@@ -1,3 +1,4 @@
+import { PrimaryButton } from '../PrimaryButton/PrimaryButton';
 import classes from './ApiLinkForm.module.css';
 import useApiLinkForm from './useApiLinkForm';
 
@@ -6,7 +7,7 @@ interface IProps {
   submitHandler: (value: string) => void;
 }
 
-const ApiSourceInput = ({ value, submitHandler }: IProps) => {
+const ApiLinkForm = ({ value, submitHandler }: IProps) => {
   const {
     inputValue,
     handleInputChange,
@@ -28,9 +29,9 @@ const ApiSourceInput = ({ value, submitHandler }: IProps) => {
         value={inputValue}
         onChange={(e) => handleInputChange(e.target.value)}
       />
-      <button type="submit">{changeUrlBtnText}</button>
+      <PrimaryButton type="submit">{changeUrlBtnText}</PrimaryButton>
     </form>
   );
 };
 
-export default ApiSourceInput;
+export default ApiLinkForm;
