@@ -19,7 +19,6 @@ function NotFoundPage() {
           {region && LOCALE_DATA[region.region].notFoundPage.brokeSomething}
         </h4>
         <h5>{region && LOCALE_DATA[region.region].notFoundPage.orU}</h5>
-
         <Link className={classes.btn} to={'/'}>
           {region && LOCALE_DATA[region.region].notFoundPage.BackToMain}
         </Link>
