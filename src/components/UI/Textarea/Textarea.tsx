@@ -3,21 +3,14 @@ import classes from './Textarea.module.css';
 interface ITextareaProps {
   value?: string;
   onChange?: (value: string) => void;
-  textareaClassName?: string;
+  className?: string;
   readOnly?: boolean;
 }
 
-function Textarea({
-  value,
-  onChange,
-  textareaClassName,
-  readOnly,
-}: ITextareaProps) {
+function Textarea({ value, onChange, className, readOnly }: ITextareaProps) {
   return (
     <textarea
-      className={`${classes.textarea} ${
-        textareaClassName ? textareaClassName : ''
-      }`}
+      className={`${classes.textarea} ${className ? className : ''}`}
       value={value}
       onChange={(e) => onChange?.(e.target.value)}
       readOnly={readOnly}

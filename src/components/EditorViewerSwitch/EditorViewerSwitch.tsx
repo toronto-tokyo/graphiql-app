@@ -18,7 +18,7 @@ const EditorViewerSwitch = ({ readOnly, className }: IProps) => {
       className={`${classes.jsonViewer} ${className ? className : className}`}
     >
       <Textarea
-        textareaClassName={classes.textarea}
+        className={classes.textarea}
         readOnly={readOnly}
         value={jsonViewer}
       />
@@ -28,7 +28,7 @@ const EditorViewerSwitch = ({ readOnly, className }: IProps) => {
       className={`${classes.queryEditor} ${className ? className : className}`}
     >
       <Textarea
-        textareaClassName={classes.textarea}
+        className={classes.textarea}
         onChange={handleQueryEditorChange}
         readOnly={readOnly}
         value={query}
