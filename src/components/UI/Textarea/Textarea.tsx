@@ -4,14 +4,14 @@ interface ITextareaProps {
   value?: string;
   onChange?: (value: string) => void;
   textareaClassName?: string;
-  readonly?: boolean;
+  readOnly?: boolean;
 }
 
 function Textarea({
   value,
   onChange,
   textareaClassName,
-  readonly,
+  readOnly,
 }: ITextareaProps) {
   return (
     <textarea
@@ -20,7 +20,7 @@ function Textarea({
       }`}
       value={value}
       onChange={(e) => onChange?.(e.target.value)}
-      readOnly={readonly}
+      readOnly={readOnly}
     />
   );
 }
