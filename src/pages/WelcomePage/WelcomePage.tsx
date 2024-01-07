@@ -8,6 +8,7 @@ import { LOCALE_DATA } from '../../locales/constants/constants';
 import { Developers } from '../../components/Developers/Developers';
 import Loader from '../../components/Loader/Loader';
 import { PrimaryButton } from '../../components/UI/PrimaryButton/PrimaryButton';
+import CourseInfo from '../../components/CourseInfo/CourseInfo';
 
 function WelcomePage() {
   const region = useRegion();
@@ -46,6 +47,7 @@ function WelcomePage() {
           </>
         )}
       </div>
+      <CourseInfo />
       <Developers />
     </div>
   );
