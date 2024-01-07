@@ -1,4 +1,3 @@
-import React from 'react';
 import classes from './Developers.module.css';
 import { DEVELOPERS_DATA, DeveloperData } from '../../shared/developers-data';
 import { DeveloperCard } from '../DeveloperCard/DeveloperCard';

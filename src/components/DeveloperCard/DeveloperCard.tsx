@@ -1,6 +1,6 @@
-import React from 'react';
 import classes from './DeveloperCard.module.css';
 import { DeveloperData } from '../../shared/developers-data';
+import { GitHubLink } from '../UI/GitHubLink/GitHubLink';
 interface DeveloperCardProps {
   data: DeveloperData;
 }
@@ -19,14 +19,7 @@ export function DeveloperCard({ data }: DeveloperCardProps) {
         <h2 className={classes.title}>{data.firstName}</h2>
         <h3 className={classes.position}>{data.position}</h3>
         <p className={classes.biography}>{data.biography}</p>
-        <a
-          className={classes.link}
-          target="_blank"
-          href={data.gitHubLink}
-          rel="noreferrer"
-        >
-          GitHub
-        </a>
+        <GitHubLink href={data.gitHubLink} text="GitHub" />
       </div>
     </div>
   );
