@@ -9,11 +9,10 @@ import {
   setIsDocsLoaded,
   setQuery,
 } from '../../redux/slices/GraphQLSlice';
-import Toast from '../../components/Toast/Toast';
-import errorIcon from '../../assets/error-icon.svg';
 import EditorViewerSwitch from '../../components/EditorViewerSwitch/EditorViewerSwitch';
 import EditorTools from '../../components/EditorTools/EditorTools';
 import { Suspense, lazy, useEffect } from 'react';
+import Toasts from '../../components/Toasts/Toasts';
 
 const Documentation = lazy(
   () => import('../../components/Documentation/Documentation')
@@ -24,7 +23,7 @@ function MainPage() {
     apiLink,
     query,
     jsonViewer,
-    error,
+    errors,
     variables,
     headers,
     isDocsLoaded,
@@ -41,8 +40,8 @@ function MainPage() {
     })();
   }, [apiLink, dispatch]);
 
-  const handleErrToastClose = () => {
-    dispatch(setError(null));
+  const handleErrToastClose = (errorId: number) => {
+    dispatch(setError(errors.filter((error) => error.id !== errorId)));
   };
 
   const handleQueryEditorChange = (value: string) => {
@@ -59,10 +58,8 @@ function MainPage() {
 
   return (
     <div className={classes.wrapper}>
-      {error && (
-        <Toast imgPath={errorIcon} onClose={handleErrToastClose}>
-          {error}
-        </Toast>
+      {errors.length > 0 && (
+        <Toasts toastsData={errors} handleErrToastClose={handleErrToastClose} />
       )}
       <div className={classes.row}>
         <Suspense>{isDocsLoaded && <Documentation />}</Suspense>
