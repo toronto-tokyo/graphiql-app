@@ -1,5 +1,6 @@
 .queryEditor,
 .jsonViewer {
+  /* flex: 0 1 40%; */
   display: flex;
   flex-direction: column;
   overflow: hidden;

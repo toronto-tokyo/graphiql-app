@@ -62,7 +62,7 @@ function MainPage() {
             value={apiLink}
             submitHandler={handleChangeURLBtnClick}
           />
-          <div className={classes.row}>
+          <div className={classes.fields}>
             <EditorViewerSwitch className={classes.queryResponseSection} />
             <div className={classes.controlPanel}>
               <PrimaryButton
