@@ -6,6 +6,7 @@ import {
   fetchSchema,
   setApiLink,
   setIsDocsLoaded,
+  setIsGraphQLDataLoading,
   setQuery,
 } from '../../redux/slices/GraphQLSlice';
 import EditorViewerSwitch from '../../components/EditorViewerSwitch/EditorViewerSwitch';
@@ -34,8 +35,10 @@ function MainPage() {
     })();
   }, [apiLink, dispatch]);
 
-  const clickSendButtonHandle = () => {
-    dispatch(fetchJSON({ url: apiLink, query, variables, headers }));
+  const clickSendButtonHandle = async () => {
+    dispatch(setIsGraphQLDataLoading(true));
+    await dispatch(fetchJSON({ url: apiLink, query, variables, headers }));
+    dispatch(setIsGraphQLDataLoading(false));
   };
 
   const handleChangeURLBtnClick = (value: string) => {
