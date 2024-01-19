@@ -2,7 +2,7 @@ import { screen } from '@testing-library/react';
 import SignInForm from '../SignInForm';
 import { renderWithRouter } from '../../../test/utils';
 import { Provider } from 'react-redux';
-import store from '../../../redux/store';
+import store from '../../../store/store';
 
 describe('SignInForm tests', () => {
   it('SignInForm renders without errors', () => {

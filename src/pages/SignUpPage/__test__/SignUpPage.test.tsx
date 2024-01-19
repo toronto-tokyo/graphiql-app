@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 import SignUpPage from '../SignUpPage';
 import { Provider } from 'react-redux';
 import RegionProvider from '../../../hoc/context/RegionContext/RegionProvider';
-import store from '../../../redux/store';
+import store from '../../../store/store';
 import { MemoryRouter } from 'react-router-dom';
 import AuthProvider from '../../../hoc/context/AuthContext/AuthProvider';
 

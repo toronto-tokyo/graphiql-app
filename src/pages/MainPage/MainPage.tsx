@@ -8,7 +8,7 @@ import {
   setIsDocsLoaded,
   setIsGraphQLDataLoading,
   setQuery,
-} from '../../redux/slices/GraphQLSlice';
+} from '../../store/slices/GraphQLSlice';
 import EditorViewerSwitch from '../../components/EditorViewerSwitch/EditorViewerSwitch';
 import pretty from '../../utils/normalizeQuery';
 import { Suspense, lazy, useEffect } from 'react';

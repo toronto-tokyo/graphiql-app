@@ -3,7 +3,7 @@ import useRegion from '../../hook/useRegion';
 import { LOCALE_DATA } from '../../locales/constants/constants';
 import { ITab } from '../../shared/types';
 import { useAppDispatch, useAppSelector } from '../../hook/useRedux';
-import { setHeaders, setVariables } from '../../redux/slices/GraphQLSlice';
+import { setHeaders, setVariables } from '../../store/slices/GraphQLSlice';
 
 const useEditorTools = () => {
   const region = useRegion();

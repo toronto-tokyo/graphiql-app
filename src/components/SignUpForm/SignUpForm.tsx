@@ -8,7 +8,7 @@ import * as yup from 'yup';
 import useRegion from '../../hook/useRegion';
 import { LOCALE_DATA } from '../../locales/constants/constants';
 import { useAppDispatch, useAppSelector } from '../../hook/useRedux';
-import { setError } from '../../redux/slices/GraphQLSlice';
+import { setError } from '../../store/slices/GraphQLSlice';
 import useErrorToastClose from '../../utils/useErrorToastClose';
 import Toasts from '../Toasts/Toasts';
 import { PrimaryButton } from '../UI/PrimaryButton/PrimaryButton';

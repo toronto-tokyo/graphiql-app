@@ -5,7 +5,7 @@ import AuthProvider from './hoc/context/AuthContext/AuthProvider';
 import AuthInitializer from './hoc/context/AuthContext/AuthInitializer';
 import RegionProvider from './hoc/context/RegionContext/RegionProvider';
 import { Provider } from 'react-redux';
-import store from './redux/store';
+import store from './store/store';
 
 function App() {
   return (

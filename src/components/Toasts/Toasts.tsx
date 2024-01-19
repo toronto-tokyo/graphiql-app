@@ -1,4 +1,4 @@
-import { IError } from '../../redux/slices/GraphQLSlice';
+import { IError } from '../../store/slices/GraphQLSlice';
 import Toast from '../Toast/Toast';
 import errorIcon from '../../assets/error-icon.svg';
 import classes from './Toasts.module.css';

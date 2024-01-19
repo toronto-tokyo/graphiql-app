@@ -7,7 +7,7 @@ import {
 import app from '../../../firebase';
 import { IProps } from '../../../shared/types';
 import { useAppDispatch, useAppSelector } from '../../../hook/useRedux';
-import { setError } from '../../../redux/slices/GraphQLSlice';
+import { setError } from '../../../store/slices/GraphQLSlice';
 
 const AuthInitializer = ({ children }: IProps) => {
   const auth = getAuth(app);
