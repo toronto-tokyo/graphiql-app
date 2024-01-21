@@ -1,0 +1,30 @@
+.toggleButton {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  background-color: var(--main-bg-color);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.toggleButton::after {
+  content: '';
+  width: 25%;
+  height: 25%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 2px solid var(--white-color);
+  border-right: none;
+  border-bottom: none;
+  transform: translate(-50%, -25%) rotate(45deg);
+}
+
+.toggleButton:hover {
+  background-color: var(--grey-color);
+}
+
+.open {
+  transform: rotate(180deg);
+}
