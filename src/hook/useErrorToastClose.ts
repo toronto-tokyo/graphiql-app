@@ -1,4 +1,4 @@
-import { useAppDispatch, useAppSelector } from '../hook/useRedux';
+import { useAppDispatch, useAppSelector } from './useRedux';
 import { setError } from '../store/slices/GraphQLSlice';
 
 const useErrorToastClose = () => {

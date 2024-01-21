@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import useRegion from '../../hook/useRegion';
-import { LOCALE_DATA } from '../../locales/constants/constants';
-import image from '../../assets/error-404.png';
+import useRegion from 'hook/useRegion';
+import { LOCALE_DATA } from 'locales/constants';
+import image from 'assets/error-404.png';
 import classes from './NotFoundPage.module.css';
 
 function NotFoundPage() {

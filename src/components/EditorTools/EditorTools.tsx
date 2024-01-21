@@ -1,7 +1,7 @@
-import Tabs from '../UI/Tabs/Tabs';
-import Textarea from '../UI/Textarea/Textarea';
+import Tabs from 'components/UI/Tabs';
 import classes from './EditorTools.module.css';
 import useEditorTools from './useEditorTools';
+import Textarea from 'components/UI/Textarea';
 
 const EditorTools = () => {
   const {

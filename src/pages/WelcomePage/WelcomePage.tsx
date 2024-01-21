@@ -1,14 +1,14 @@
 import { Link } from 'react-router-dom';
 import classes from './WelcomePage.module.css';
 import { useContext } from 'react';
-import AuthContext from '../../hoc/context/AuthContext/AuthContext';
-import { IAuthContext } from '../../shared/types';
-import useRegion from '../../hook/useRegion';
-import { LOCALE_DATA } from '../../locales/constants/constants';
-import { Developers } from '../../components/Developers/Developers';
-import Loader from '../../components/Loader/Loader';
+import AuthContext from 'hoc/context/AuthContext/AuthContext';
+import { IAuthContext } from 'shared/types';
+import useRegion from 'hook/useRegion';
+import { LOCALE_DATA } from 'locales/constants';
+import { Developers } from 'components/Developers/Developers';
+import Loader from 'components/Loader/Loader';
 import { PrimaryButton } from 'components/UI/PrimaryButton/PrimaryButton';
-import CourseInfo from '../../components/CourseInfo/CourseInfo';
+import CourseInfo from 'components/CourseInfo/CourseInfo';
 
 function WelcomePage() {
   const region = useRegion();

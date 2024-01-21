@@ -1,10 +1,10 @@
 import { useContext, useEffect } from 'react';
-import SignInForm from '../../components/SignInForm/SignInForm';
-import AuthContext from '../../hoc/context/AuthContext/AuthContext';
+import SignInForm from 'components/SignInForm';
+import AuthContext from 'hoc/context/AuthContext/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { IAuthContext } from '../../shared/types';
-import useRegion from '../../hook/useRegion';
-import { LOCALE_DATA } from '../../locales/constants/constants';
+import { IAuthContext } from 'shared/types';
+import useRegion from 'hook/useRegion';
+import { LOCALE_DATA } from 'locales/constants';
 import classes from './SignInPage.module.css';
 
 function SignInPage() {

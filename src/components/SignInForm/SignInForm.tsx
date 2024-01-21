@@ -1,17 +1,17 @@
 import { useNavigate } from 'react-router-dom';
-import InputEmail from '../UI/InputEmail/InputEmail';
-import InputPassword from '../UI/InputPassword/InputPassword';
 import styles from './SignInForm.module.css';
 import { useState } from 'react';
-import { logInWithEmailAndPassword } from '../../firebase';
+import { logInWithEmailAndPassword } from 'firebaseClient/firebaseClient';
 import * as yup from 'yup';
-import useRegion from '../../hook/useRegion';
-import { LOCALE_DATA } from '../../locales/constants/constants';
-import { useAppDispatch, useAppSelector } from '../../hook/useRedux';
-import { setError } from '../../store/slices/GraphQLSlice';
-import Toasts from '../Toasts/Toasts';
-import useErrorToastClose from '../../utils/useErrorToastClose';
-import { PrimaryButton } from '../UI/PrimaryButton/PrimaryButton';
+import { setError } from 'store/slices/GraphQLSlice';
+import { useAppDispatch, useAppSelector } from 'hook/useRedux';
+import useRegion from 'hook/useRegion';
+import useErrorToastClose from 'hook/useErrorToastClose';
+import Toasts from 'components/Toasts';
+import InputEmail from 'components/UI/InputEmail';
+import PrimaryButton from 'components/UI/PrimaryButton';
+import InputPassword from 'components/UI/InputPassword';
+import { LOCALE_DATA } from 'locales/constants';
 
 const signInFormSchema = yup.object().shape({
   email: yup

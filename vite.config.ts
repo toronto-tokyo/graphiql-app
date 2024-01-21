@@ -28,7 +28,9 @@ export default defineConfig({
   resolve: {
     alias: {
       assets: '/src/assets',
+      app: '/src/app',
       components: '/src/components',
+      firebaseClient: '/src/firebaseClient',
       hoc: '/src/hoc',
       hook: '/src/hook',
       layouts: '/src/layouts',

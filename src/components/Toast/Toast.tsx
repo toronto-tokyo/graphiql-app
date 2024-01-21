@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import classes from './Toast.module.css';
-import CloseButton from '../UI/CloseButton/CloseButton';
+import CloseButton from 'components/UI/CloseButton';
 
 interface IProps {
   children: ReactNode;

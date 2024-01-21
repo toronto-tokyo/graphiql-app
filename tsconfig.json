@@ -29,7 +29,9 @@
     "baseUrl": "src",
     "paths": {
       "assets/*": ["assets/*"],
+      "app/*": ["app/*"],
       "components/*": ["components/*"],
+      "firebaseClient/*": ["firebaseClient/*"],
       "hoc/*": ["hoc/*"],
       "hook/*": ["hook/*"],
       "layouts/*": ["layouts/*"],

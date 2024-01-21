@@ -1,8 +1,8 @@
-import AuthContext from './AuthContext';
 import { getAuth } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import app from '../../../firebase';
-import { IProps } from '../../../shared/types';
+import app from 'firebaseClient/firebaseClient';
+import { IProps } from 'shared/types';
+import AuthContext from './AuthContext';
 
 function AuthProvider({ children }: IProps) {
   const auth = getAuth(app);

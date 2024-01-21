@@ -1,6 +1,6 @@
 import { ReactNode, useEffect, useState } from 'react';
 import classes from './Header.module.css';
-import ContentWrapper from '../UI/ContentWrapper/ContentWrapper';
+import ContentWrapper from 'components/ContentWrapper';
 
 interface IProps {
   children: ReactNode;

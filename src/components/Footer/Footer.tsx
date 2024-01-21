@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
 import classes from './Footer.module.css';
-import { SchoolLink } from '../UI/SchoolLink/SchoolLink';
-import { GitHubLink } from '../UI/GitHubLink/GitHubLink';
-import ContentWrapper from '../UI/ContentWrapper/ContentWrapper';
+import ContentWrapper from 'components/ContentWrapper';
+import GitHubLink from 'components/UI/GitHubLink';
+import SchoolLink from 'components/UI/SchoolLink';
 
 interface IProps {
   children?: ReactNode;

@@ -1,17 +1,17 @@
-import InputPassword from '../UI/InputPassword/InputPassword';
-import styles from './SignUpForm.module.css';
-import InputName from '../UI/InputName/InputName';
 import { useState } from 'react';
-import { registerWithEmailAndPassword } from '../../firebase';
-import InputEmail from '../UI/InputEmail/InputEmail';
+import styles from './SignUpForm.module.css';
+import { registerWithEmailAndPassword } from 'firebaseClient/firebaseClient';
 import * as yup from 'yup';
-import useRegion from '../../hook/useRegion';
-import { LOCALE_DATA } from '../../locales/constants/constants';
-import { useAppDispatch, useAppSelector } from '../../hook/useRedux';
-import { setError } from '../../store/slices/GraphQLSlice';
-import useErrorToastClose from '../../utils/useErrorToastClose';
-import Toasts from '../Toasts/Toasts';
-import { PrimaryButton } from '../UI/PrimaryButton/PrimaryButton';
+import { setError } from 'store/slices/GraphQLSlice';
+import { useAppDispatch, useAppSelector } from 'hook/useRedux';
+import useRegion from 'hook/useRegion';
+import useErrorToastClose from 'hook/useErrorToastClose';
+import InputName from 'components/UI/InputName';
+import Toasts from 'components/Toasts';
+import InputPassword from 'components/UI/InputPassword';
+import InputEmail from 'components/UI/InputEmail';
+import PrimaryButton from 'components/UI/PrimaryButton';
+import { LOCALE_DATA } from 'locales/constants';
 
 const signUpFormSchema = yup.object().shape({
   name: yup

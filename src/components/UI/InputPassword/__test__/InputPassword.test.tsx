@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import PasswordInput from '../InputPassword';
 import RegionProvider from '../../../../hoc/context/RegionContext/RegionProvider';
-import { LOCALE_DATA } from '../../../../locales/constants/constants';
+import { LOCALE_DATA } from '../../../../locales/constants';
 import { INITIAL_REGION } from '../../../../shared/constants';
 import userEvent from '@testing-library/user-event';
 

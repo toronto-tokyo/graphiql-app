@@ -1,5 +1,5 @@
-import useRegion from '../../hook/useRegion';
-import { LOCALE_DATA } from '../../locales/constants/constants';
+import useRegion from 'hook/useRegion';
+import { LOCALE_DATA } from 'locales/constants';
 import styles from './CourseInfo.module.css';
 
 function CourseInfo() {

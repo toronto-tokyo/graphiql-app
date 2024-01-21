@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import AuthContext from '../hoc/context/AuthContext/AuthContext';
+import { AuthContext } from 'hoc';
 
 const useAuth = () => useContext(AuthContext);
 

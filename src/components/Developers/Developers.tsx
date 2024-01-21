@@ -1,10 +1,10 @@
 import classes from './Developers.module.css';
-import { DeveloperCard } from '../DeveloperCard/DeveloperCard';
-import useRegion from '../../hook/useRegion';
-import { LOCALE_DATA } from '../../locales/constants/constants';
-import ilyaPhoto from '../../assets/ilya-photo.jpg';
-import vladPhoto from '../../assets/vlad-photo.jpg';
-import miraPhoto from '../../assets/mira-photo.jpg';
+import DeveloperCard from 'components/DeveloperCard';
+import useRegion from 'hook/useRegion';
+import { LOCALE_DATA } from 'locales/constants';
+import ilyaPhoto from 'assets/ilya-photo.jpg';
+import vladPhoto from 'assets/vlad-photo.jpg';
+import miraPhoto from 'assets/mira-photo.jpg';
 
 export function Developers() {
   const region = useRegion();

@@ -1,8 +1,8 @@
+import useRegion from 'hook/useRegion';
+import { LOCALE_DATA } from 'locales/constants';
 import { ChangeEvent, useState } from 'react';
+import isErrorOfType from 'utils/isErrorOfType';
 import * as yup from 'yup';
-import useRegion from '../../../hook/useRegion';
-import { LOCALE_DATA } from '../../../locales/constants/constants';
-import isErrorOfType from '../../../utils/isErrorOfType';
 
 const passwordSchema = yup.object().shape({
   password: yup

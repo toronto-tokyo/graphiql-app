@@ -1,8 +1,8 @@
-import { IError } from '../../store/slices/GraphQLSlice';
-import Toast from '../Toast/Toast';
-import errorIcon from '../../assets/error-icon.svg';
+import { IError } from 'store/slices/GraphQLSlice';
+import errorIcon from 'assets/error-icon.svg';
 import classes from './Toasts.module.css';
-import useErrorToastClose from '../../utils/useErrorToastClose';
+import Toast from 'components/Toast/Toast';
+import useErrorToastClose from 'hook/useErrorToastClose';
 
 interface IToastsProps {
   toastsData: IError[];

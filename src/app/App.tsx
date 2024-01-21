@@ -1,11 +1,11 @@
 import { RouterProvider } from 'react-router-dom';
-import router from './router/router';
-import './App.css';
-import AuthProvider from './hoc/context/AuthContext/AuthProvider';
-import AuthInitializer from './hoc/context/AuthContext/AuthInitializer';
-import RegionProvider from './hoc/context/RegionContext/RegionProvider';
 import { Provider } from 'react-redux';
-import store from './store/store';
+import router from 'router';
+import './App.css';
+import store from 'store';
+import AuthProvider from 'hoc/context/AuthContext/AuthProvider';
+import AuthInitializer from 'hoc/context/AuthContext/AuthInitializer';
+import RegionProvider from 'hoc/context/RegionContext/RegionProvider';
 
 function App() {
   return (

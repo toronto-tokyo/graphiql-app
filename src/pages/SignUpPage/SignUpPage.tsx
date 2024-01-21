@@ -1,10 +1,10 @@
 import { useContext, useEffect } from 'react';
-import SignUpForm from '../../components/SignUpForm/SignUpForm';
-import AuthContext from '../../hoc/context/AuthContext/AuthContext';
+import SignUpForm from 'components/SignUpForm/SignUpForm';
+import AuthContext from 'hoc/context/AuthContext/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { IAuthContext } from '../../shared/types';
-import useRegion from '../../hook/useRegion';
-import { LOCALE_DATA } from '../../locales/constants/constants';
+import { IAuthContext } from 'shared/types';
+import useRegion from 'hook/useRegion';
+import { LOCALE_DATA } from 'locales/constants';
 import classes from './SignUpPage.module.css';
 
 function SignUpPage() {

@@ -1,4 +1,4 @@
-import { REGIONS } from '../locales/constants/constants';
+import { REGIONS } from '../locales/constants';
 
 export const QUERY_TEMPLATE = `query {
   

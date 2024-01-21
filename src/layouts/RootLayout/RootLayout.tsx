@@ -1,16 +1,16 @@
 import { NavLink, Outlet } from 'react-router-dom';
-import classes from './RootLayout.module.css';
-import Header from '../components/Header/Header';
-import Footer from '../components/Footer/Footer';
-import { logout } from '../firebase';
-import useRegion from '../hook/useRegion';
-import { LOCALE_DATA, REGIONS } from '../locales/constants/constants';
-import { ErrorBoundary } from 'react-error-boundary';
-import ErrorFallback from '../components/ErrorFallback/ErrorFallback';
-import { IAuthContext } from '../shared/types';
-import AuthContext from '../hoc/context/AuthContext/AuthContext';
 import { useContext } from 'react';
-import { PrimaryButton } from '../components/UI/PrimaryButton/PrimaryButton';
+import classes from './RootLayout.module.css';
+import { logout } from 'firebaseClient/firebaseClient';
+import { LOCALE_DATA, REGIONS } from 'locales/constants';
+import { ErrorBoundary } from 'react-error-boundary';
+import { IAuthContext } from 'shared/types';
+import useRegion from 'hook/useRegion';
+import AuthContext from 'hoc/context/AuthContext/AuthContext';
+import Header from 'components/Header';
+import PrimaryButton from 'components/UI/PrimaryButton';
+import ErrorFallback from 'components/ErrorFallback';
+import Footer from 'components/Footer';
 
 function RootLayout() {
   const region = useRegion();
