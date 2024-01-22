@@ -22,8 +22,12 @@ function SignInPage() {
   }
   return (
     <div className={classes.wrapper}>
-      <h1>{region && LOCALE_DATA[region.region].signInPage.text.signIn}</h1>
-      <SignInForm />
+      <div className={classes.content}>
+        <h1 className={classes.header}>
+          {region && LOCALE_DATA[region.region].signInPage.text.signIn}
+        </h1>
+        <SignInForm />
+      </div>
     </div>
   );
 }
