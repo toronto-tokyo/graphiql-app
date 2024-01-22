@@ -1,0 +1,26 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background-color: var(--white-color);
+  border: 3px solid transparent;
+  border-radius: 5px;
+  transition: border 0.2s;
+}
+
+.wrapper:focus-within {
+  border: 3px solid var(--grey-color3);
+}
+
+.input {
+  width: 100%;
+  background: transparent;
+  padding: 1.1rem 10px 0.2rem;
+  border: none;
+  outline: none;
+}
+
+.passwordEye {
+  margin-right: 10px;
+}
