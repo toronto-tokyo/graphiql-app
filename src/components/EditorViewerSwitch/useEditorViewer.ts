@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from '../../hook/useRedux';
-import { setQuery } from '../../redux/slices/GraphQLSlice';
+import { setQuery } from '../../store/slices/GraphQLSlice';
 
 const useEditorViewerSwitch = () => {
   const { query, jsonViewer, isGraphQLDataLoading } = useAppSelector(

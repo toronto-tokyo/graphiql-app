@@ -1,0 +1,27 @@
+.inputBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  position: relative;
+}
+
+.inputBlock:focus-within .label,
+.inputBlock:not(:has(:placeholder-shown)) .label {
+  font-size: 0.7rem;
+  transform: translate(10px, 0.2rem);
+}
+
+.label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  transform: translate(10px, 0.75rem);
+  color: var(--grey-color);
+  pointer-events: none;
+  transition: all 0.2s;
+}
+
+.errorMessage {
+  color: var(--yellow-color);
+}

@@ -1,5 +1,5 @@
 import classes from './CloseButton.module.css';
-import closeSquare from '../../../assets/close-square-icon.svg';
+import closeSquare from 'assets/close-square-icon.svg';
 
 interface IProps {
   ariaLabel: string;

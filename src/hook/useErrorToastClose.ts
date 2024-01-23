@@ -1,0 +1,11 @@
+import { useAppDispatch, useAppSelector } from './useRedux';
+import { setError } from '../store/slices/GraphQLSlice';
+
+const useErrorToastClose = () => {
+  const dispatch = useAppDispatch();
+  const { errors } = useAppSelector((store) => store.graphQL);
+  return (errorId: number) =>
+    dispatch(setError(errors.filter((error) => error.id !== errorId)));
+};
+
+export default useErrorToastClose;

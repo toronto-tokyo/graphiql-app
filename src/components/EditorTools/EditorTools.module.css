@@ -1,12 +1,19 @@
 .wrapper {
-  flex: 0 1 50%;
+  flex: 0 1 auto;
   background-color: rgba(0, 0, 0, 0.2);
   padding: 0px 20px 10px 20px;
   display: flex;
   flex-direction: column;
 }
 
+.open {
+  flex: 0 1 50%;
+}
+
 .toolBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid #fff;
 }
 

@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import RootLayout from '../RootLayout';
+import RootLayout from '../RootLayout/RootLayout';
 import RegionProvider from '../../hoc/context/RegionContext/RegionProvider';
 import { MemoryRouter } from 'react-router-dom';
 import AuthProvider from '../../hoc/context/AuthContext/AuthProvider';

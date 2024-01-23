@@ -1,7 +1,7 @@
-import { PrimaryButton } from '../UI/PrimaryButton/PrimaryButton';
-import Textarea from '../UI/Textarea/Textarea';
 import classes from './Documentation.module.css';
 import useDocumentation from './useDocumentation';
+import Textarea from 'components/UI/Textarea';
+import PrimaryButton from 'components/UI/PrimaryButton';
 
 const Documentation = () => {
   const { documentation, handleDocsBtnClick, docsBtnText, showContent } =

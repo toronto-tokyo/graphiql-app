@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 import { RouterProvider, createMemoryRouter } from 'react-router-dom';
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
-import graphQLReducer from '../redux/slices/GraphQLSlice';
+import graphQLReducer from '../store/slices/GraphQLSlice';
 
 export const renderWithProvider = (ui: ReactNode): RenderResult => {
   const store = configureStore({

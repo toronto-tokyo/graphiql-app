@@ -1,6 +1,6 @@
 import { ReactNode, useState } from 'react';
+import { INITIAL_REGION } from 'shared/constants';
 import RegionContext from './RegionContext';
-import { INITIAL_REGION } from '../../../shared/constants';
 
 interface IProps {
   children: ReactNode;

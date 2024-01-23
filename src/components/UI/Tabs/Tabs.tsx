@@ -1,4 +1,4 @@
-import { ITab } from '../../../shared/types';
+import { ITab } from 'shared/types';
 import classes from './Tabs.module.css';
 
 interface IProps {

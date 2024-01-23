@@ -1,6 +1,6 @@
 import classes from './DeveloperCard.module.css';
-import { Developer } from '../../shared/types';
-import { GitHubLink } from '../UI/GitHubLink/GitHubLink';
+import { Developer } from 'shared/types';
+import GitHubLink from 'components/UI/GitHubLink';
 interface DeveloperCardProps {
   data: Developer;
 }

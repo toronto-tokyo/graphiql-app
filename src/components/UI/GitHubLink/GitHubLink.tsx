@@ -1,5 +1,5 @@
 import classes from './GitHubLink.module.css';
-import GitHubLogo from '../../../assets/github-logo.png';
+import GitHubLogo from 'assets/github-logo.png';
 interface GitHubLinkProps {
   href: string | undefined;
   text: string;

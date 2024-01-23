@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useAppSelector } from '../../hook/useRedux';
 import useRegion from '../../hook/useRegion';
-import { LOCALE_DATA } from '../../locales/constants/constants';
+import { LOCALE_DATA } from '../../locales/constants';
 
 const useDocumentation = () => {
   const { documentation } = useAppSelector((store) => store.graphQL);

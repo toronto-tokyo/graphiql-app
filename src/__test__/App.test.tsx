@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import App from '../App';
+import App from '../app/App';
 
 describe('App component', () => {
   it('should render without errors', () => {

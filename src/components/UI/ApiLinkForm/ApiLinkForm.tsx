@@ -1,4 +1,4 @@
-import { PrimaryButton } from '../PrimaryButton/PrimaryButton';
+import PrimaryButton from 'components/UI/PrimaryButton';
 import classes from './ApiLinkForm.module.css';
 import useApiLinkForm from './useApiLinkForm';
 

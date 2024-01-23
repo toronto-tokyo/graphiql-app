@@ -2,7 +2,7 @@ import { screen } from '@testing-library/react';
 import EditorTools from '../EditorTools';
 import { renderWithProvider } from '../../../test/utils';
 import userEvent from '@testing-library/user-event';
-import * as apiHooks from '../../../redux/slices/GraphQLSlice';
+import * as apiHooks from '../../../store/slices/GraphQLSlice';
 import RegionProvider from '../../../hoc/context/RegionContext/RegionProvider';
 
 describe('EditorTools component tests', () => {

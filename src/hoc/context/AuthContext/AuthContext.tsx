@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { IAuthContext } from '../../../shared/types';
+import { IAuthContext } from 'shared/types';
 
 const AuthContext = createContext<IAuthContext | null>(null);
 

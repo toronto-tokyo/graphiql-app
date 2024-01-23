@@ -1,6 +1,4 @@
 import classes from './MainPage.module.css';
-import ApiLinkForm from '../../components/UI/ApiLinkForm/ApiLinkForm';
-import { useAppDispatch, useAppSelector } from '../../hook/useRedux';
 import {
   fetchJSON,
   fetchSchema,
@@ -8,15 +6,17 @@ import {
   setIsDocsLoaded,
   setIsGraphQLDataLoading,
   setQuery,
-} from '../../redux/slices/GraphQLSlice';
-import EditorViewerSwitch from '../../components/EditorViewerSwitch/EditorViewerSwitch';
-import pretty from '../../utils/normalizeQuery';
+} from 'store/slices/GraphQLSlice';
+import sendIcon from 'assets/sendIcon.png';
+import prettyIcon from 'assets/prettyIcon.png';
 import { Suspense, lazy, useEffect } from 'react';
-import Toasts from '../../components/Toasts/Toasts';
-import { PrimaryButton } from '../../components/UI/PrimaryButton/PrimaryButton';
-import useErrorToastClose from '../../utils/useErrorToastClose';
-import sendIcon from '../../assets/sendIcon.png';
-import prettyIcon from '../../assets/prettyIcon.png';
+import { useAppDispatch, useAppSelector } from 'hook/useRedux';
+import pretty from 'utils/normalizeQuery';
+import Toasts from 'components/Toasts';
+import useErrorToastClose from 'hook/useErrorToastClose';
+import ApiLinkForm from 'components/UI/ApiLinkForm';
+import EditorViewerSwitch from 'components/EditorViewerSwitch';
+import PrimaryButton from 'components/UI/PrimaryButton';
 
 const Documentation = lazy(
   () => import('../../components/Documentation/Documentation')

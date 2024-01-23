@@ -15,8 +15,8 @@
 }
 
 .myBtn:disabled {
-  color: var(--grey-color);
-  background: var(--grey-color2);
+  color: var(--grey-color2);
+  background: var(--grey-color3);
   cursor: default;
   text-decoration: none;
 }

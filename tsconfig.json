@@ -25,7 +25,24 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": "src",
+    "paths": {
+      "assets/*": ["assets/*"],
+      "app/*": ["app/*"],
+      "components/*": ["components/*"],
+      "firebaseClient/*": ["firebaseClient/*"],
+      "hoc/*": ["hoc/*"],
+      "hook/*": ["hook/*"],
+      "layouts/*": ["layouts/*"],
+      "locales/*": ["locales/*"],
+      "pages/*": ["pages/*"],
+      "store/*": ["store/*"],
+      "router/*": ["router/*"],
+      "shared/*": ["shared/*"],
+      "test/*": ["test/*"],
+      "utils/*": ["utils/*"],
+    }
   },
   "include": [
     "src"

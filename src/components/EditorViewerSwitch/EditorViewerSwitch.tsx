@@ -1,8 +1,8 @@
-import EditorTools from '../EditorTools/EditorTools';
-import Loader from '../Loader/Loader';
-import Textarea from '../UI/Textarea/Textarea';
+import Loader from 'components/Loader';
 import classes from './EditorViewerSwitch.module.css';
 import useEditorViewerSwitch from './useEditorViewer';
+import Textarea from 'components/UI/Textarea';
+import EditorTools from 'components/EditorTools';
 
 interface IProps {
   onChange?: (value: string) => void;
