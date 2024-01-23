@@ -1,8 +1,8 @@
 import { render } from '@testing-library/react';
 import NotFoundPage from '../NotFoundPage';
 import { Provider } from 'react-redux';
-import RegionProvider from '../../../hoc/context/RegionContext/RegionProvider';
-import store from '../../../store/store';
+import RegionProvider from 'hoc/context/RegionContext/RegionProvider';
+import store from 'store';
 import { MemoryRouter } from 'react-router-dom';
 
 describe('NotFoundPage component', () => {

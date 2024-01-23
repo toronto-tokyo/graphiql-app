@@ -1,11 +1,11 @@
 import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
-import store from '../../../store/store';
+import store from 'store';
 import MainPage from '../MainPage';
 import userEvent from '@testing-library/user-event';
-import { BASE_API_LINK } from '../../../shared/constants';
-import RegionProvider from '../../../hoc/context/RegionContext/RegionProvider';
-import * as apiHooks from '../../../store/slices/GraphQLSlice';
+import { BASE_API_LINK } from 'shared/constants';
+import RegionProvider from 'hoc/context/RegionContext/RegionProvider';
+import * as apiHooks from 'store/slices/GraphQLSlice';
 
 describe('MainPage component tests', () => {
   it('MainPage renders without errors', () => {
