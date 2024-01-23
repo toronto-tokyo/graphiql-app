@@ -18,9 +18,7 @@ import ApiLinkForm from 'components/UI/ApiLinkForm';
 import EditorViewerSwitch from 'components/EditorViewerSwitch';
 import PrimaryButton from 'components/UI/PrimaryButton';
 
-const Documentation = lazy(
-  () => import('../../components/Documentation/Documentation')
-);
+const Documentation = lazy(() => import('components/Documentation'));
 
 function MainPage() {
   const { apiLink, query, errors, variables, headers, isDocsLoaded } =

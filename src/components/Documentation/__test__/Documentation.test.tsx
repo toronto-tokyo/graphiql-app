@@ -1,5 +1,5 @@
 import userEvent from '@testing-library/user-event';
-import { renderWithProvider } from '../../../test/utils';
+import { renderWithProvider } from 'test/utils';
 import Documentation from '../Documentation';
 import { screen } from '@testing-library/react';
 

@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { LOCALE_DATA } from '../../../locales/constants';
-import useRegion from '../../../hook/useRegion';
+import { LOCALE_DATA } from 'locales/constants';
+import useRegion from 'hook/useRegion';
 
 interface IProps {
   value: string;
