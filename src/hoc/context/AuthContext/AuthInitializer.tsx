@@ -4,9 +4,9 @@ import {
   browserLocalPersistence,
   setPersistence,
 } from 'firebase/auth';
-import app from '../../../firebaseClient/firebaseClient';
-import { IProps } from '../../../shared/types';
-import { useAppDispatch, useAppSelector } from '../../../hook/useRedux';
+import app from 'firebaseClient/firebaseClient';
+import { IProps } from 'shared/types';
+import { useAppDispatch, useAppSelector } from 'hook/useRedux';
 import { setError } from 'store/slices/GraphQLSlice';
 
 const AuthInitializer = ({ children }: IProps) => {

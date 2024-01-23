@@ -1,9 +1,9 @@
 import { screen } from '@testing-library/react';
 import EditorTools from '../EditorTools';
-import { renderWithProvider } from '../../../test/utils';
+import { renderWithProvider } from 'test/utils';
 import userEvent from '@testing-library/user-event';
-import * as apiHooks from '../../../store/slices/GraphQLSlice';
-import RegionProvider from '../../../hoc/context/RegionContext/RegionProvider';
+import * as apiHooks from 'store/slices/GraphQLSlice';
+import RegionProvider from 'hoc/context/RegionContext/RegionProvider';
 
 describe('EditorTools component tests', () => {
   it('EditorTools renders without errors', () => {

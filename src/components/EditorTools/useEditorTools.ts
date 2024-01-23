@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import useRegion from '../../hook/useRegion';
-import { LOCALE_DATA } from '../../locales/constants';
-import { ITab } from '../../shared/types';
-import { useAppDispatch, useAppSelector } from '../../hook/useRedux';
-import { setHeaders, setVariables } from '../../store/slices/GraphQLSlice';
+import useRegion from 'hook/useRegion';
+import { LOCALE_DATA } from 'locales/constants';
+import { ITab } from 'shared/types';
+import { useAppDispatch, useAppSelector } from 'hook/useRedux';
+import { setHeaders, setVariables } from 'store/slices/GraphQLSlice';
 
 const useEditorTools = () => {
   const region = useRegion();

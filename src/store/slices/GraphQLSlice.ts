@@ -4,8 +4,8 @@ import {
   PayloadAction,
   UnknownAction,
 } from '@reduxjs/toolkit';
-import { BASE_API_LINK, QUERY_TEMPLATE } from '../../shared/constants';
-import { parseSchema } from '../../utils/parseSchema';
+import { BASE_API_LINK, QUERY_TEMPLATE } from 'shared/constants';
+import { parseSchema } from 'utils/parseSchema';
 import { getIntrospectionQuery } from 'graphql';
 
 export interface IError {
